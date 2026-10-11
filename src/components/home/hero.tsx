@@ -21,7 +21,7 @@ export function Hero() {
             <span className="block">Own every Pixel of</span>
             <span className="block">
               your <span className="text-text-secondary">Design System</span>
-              <span aria-hidden className="ml-4 inline-flex">
+              <span aria-hidden className="-mt-3 ml-4 inline-flex">
                 {/* Photo is scaled up around the face (about 38% down) so it fills the circle. */}
                 <span className="relative z-10 size-14 overflow-hidden rounded-full border-3 border-text">
                   <Image
