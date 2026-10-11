@@ -62,6 +62,8 @@ block (`bg-bg`, `text-accent`, `border-border`, `rounded-md`, `font-mono`, …).
 
 ## Deployment
 
+- Repo is public: https://github.com/njoh-simplice/ui-nsdev (the header CTA and footer
+  link to it).
 - Hosted on Vercel, auto-deploys on push to `main`.
 - DNS stays on Cloudflare (the existing `nsdev.me` zone) — `ui` is a CNAME pointed at
   Vercel, DNS-only (not proxied).
@@ -69,8 +71,5 @@ block (`bg-bg`, `text-accent`, `border-border`, `rounded-md`, `font-mono`, …).
 
 ## Open decisions — ask, don't assume
 
-- **Repo visibility:** recommended private for now, public once Phase 1 (Foundations)
-  ships. The header CTA and footer link to GitHub, so the repo must be public before the
-  home page deploys.
 - **Distribution model:** `npm install` vs. a shadcn-style copy-paste registry. Deferred on
   purpose — don't build either yet.

@@ -1,5 +1,5 @@
 export const GITHUB_URL = "https://github.com/njoh-simplice/ui-nsdev";
-export const AUTHOR_URL = "https://nsdev.me";
+export const AUTHOR_URL = "https://heysimplice.com";
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
