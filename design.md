@@ -1,7 +1,7 @@
 # Design System — ui.nsdev.me
 
 Reference for the tokens used across the component library. Values here are final.
-Tailwind utilities come from the `@theme` block in `app/globals.css`.
+Tailwind utilities come from the `@theme` block in `src/app/globals.css`.
 
 ---
 
@@ -30,6 +30,9 @@ Single dark theme. No light mode yet — that is an open item under Polish.
   sits just under AA for small body copy; don't use it for paragraphs.
 - **`accent` and `success` are one green.** The same `#00FF66` covers active/on states, the
   primary CTA, and success. Do not introduce a separate success color.
+- **Green belongs to the components, not the site chrome.** The website itself (header,
+  hero, footer, docs layout) stays neutral — `text` on `bg`, no `accent`. Green appears only
+  inside component demos, where it shows a component's active/on/success states.
 - **Solid semantic fills pair with `bg` on top.** Any solid fill of `accent`, `success`,
   `warning`, or `danger` uses `bg` (`#0A0A0A`) as the text/icon color on top — never `text`.
   Light-on-fill contrast fails badly on all four (as low as 1.08:1); dark-on-fill is

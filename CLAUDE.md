@@ -16,7 +16,9 @@ Content is organized into five sections plus docs:
 - **Pages** — full templates built from Blocks.
 - **Dashboard** — full app screens, built last, kept separate from Pages.
 
-Nav: `Logo | Doc, Components, Blocks, Pages, Dashboard | [button]`
+Nav: `Logo | Doc, Components, Blocks, Pages, Dashboard | [Give us a star]`
+
+The header button is a GitHub link labelled "Give us a star" — no star count.
 
 ## Tech stack
 
@@ -67,9 +69,8 @@ block (`bg-bg`, `text-accent`, `border-border`, `rounded-md`, `font-mono`, …).
 
 ## Open decisions — ask, don't assume
 
-- **Header CTA button purpose:** GitHub link, "Get started" → `/docs`, or a theme toggle.
-  Undecided.
 - **Repo visibility:** recommended private for now, public once Phase 1 (Foundations)
-  ships.
+  ships. The header CTA and footer link to GitHub, so the repo must be public before the
+  home page deploys.
 - **Distribution model:** `npm install` vs. a shadcn-style copy-paste registry. Deferred on
   purpose — don't build either yet.
