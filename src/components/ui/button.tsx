@@ -7,8 +7,8 @@ type Variant = "primary" | "secondary";
 // The six states: default (primary), secondary, hover, focus, clicked, disabled.
 // Hover/active are guarded with not-data-[disabled] so a disabled button never reacts.
 const base = [
-  "inline-flex h-8 items-center justify-center gap-2 whitespace-nowrap rounded-md border px-3.5",
-  "text-sm font-semibold select-none cursor-pointer",
+  "inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md border px-4",
+  "text-base font-semibold select-none cursor-pointer",
   "transition-[background-color,border-color,color,transform] duration-100",
   "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text",
   "not-data-[disabled]:active:translate-y-px",

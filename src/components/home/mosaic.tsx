@@ -8,24 +8,23 @@ const columns: string[][] = [
 
 export function Mosaic() {
   return (
-    <section
-      aria-hidden
-      className="relative mx-auto mt-12 w-full max-w-322 px-6 lg:mt-14"
-    >
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[428fr_370fr_423fr]">
-        {columns.map((tiles, i) => (
-          <div key={i} className="contents lg:flex lg:flex-col lg:gap-3">
-            {tiles.map((height, j) => (
-              <div
-                key={j}
-                className={`h-44 rounded-lg border-2 border-border bg-surface sm:h-52 ${height}`}
-              />
-            ))}
-          </div>
-        ))}
+    <section aria-hidden className="page-gutter mt-12 w-full lg:mt-14">
+      <div className="relative">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[428fr_370fr_423fr]">
+          {columns.map((tiles, i) => (
+            <div key={i} className="contents lg:flex lg:flex-col lg:gap-3">
+              {tiles.map((height, j) => (
+                <div
+                  key={j}
+                  className={`h-44 rounded-lg border-2 border-border bg-surface sm:h-52 ${height}`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+        {/* Fades the last row into the page background. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-bg to-transparent" />
       </div>
-      {/* Fades the last row into the page background. */}
-      <div className="pointer-events-none absolute inset-x-6 bottom-0 h-32 bg-linear-to-t from-bg to-transparent" />
     </section>
   );
 }

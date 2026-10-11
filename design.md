@@ -45,12 +45,14 @@ Single dark theme. No light mode yet — that is an open item under Polish.
 
 ## Typography
 
-Geist and Geist Mono only. No third face.
+Host Grotesk and Geist Mono only. No third face.
 
 | Face | Roles |
 |---|---|
-| **Geist Sans** | UI text, headings, body |
+| **Host Grotesk** | UI text, headings, body |
 | **Geist Mono** | Code, Shiki source panels, inline code |
+
+Sans stack: `"Host Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`.
 
 ### Why only two
 
@@ -60,21 +62,17 @@ source at build time, and inline code has to match those panels, so a dedicated 
 is load-bearing rather than decorative. A third face would add weight and a decision point
 with nothing to do.
 
-### Self-hosting
+### Loading
 
-Use the official `geist` npm package (`npm install geist`), not a Google Fonts import — it
-is zero-config with `next/font` and avoids an external request.
+Both faces load through `next/font/google` in `src/app/layout.tsx`. Next downloads them at
+build time and serves them from our own origin, so there is no request to Google at
+runtime.
 
-In `app/layout.tsx`:
+- `Host_Grotesk` exposes `--font-host-grotesk`
+- `Geist_Mono` exposes `--font-geist-mono`
 
-- import `GeistSans` from `geist/font/sans` and `GeistMono` from `geist/font/mono`
-- apply `` `${GeistSans.variable} ${GeistMono.variable}` `` on the `<html>` element
-
-These expose `--font-geist-sans` / `--font-geist-mono`, which `--font-sans` / `--font-mono`
-in the `@theme` block point at.
-
-> Note: `app/layout.tsx` currently still loads Geist via `next/font/google`. Migrating it to
-> the `geist` package is a pending setup step, tracked separately.
+Apply both variables on the `<html>` element. `--font-sans` / `--font-mono` in the `@theme`
+block point at them, with the system fallbacks above.
 
 ---
 
