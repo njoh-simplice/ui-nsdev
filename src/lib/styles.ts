@@ -9,9 +9,10 @@ export const focusRing =
 // shares these four decisions. They are written up under "Overlays" in design.md.
 
 // The surface of a floating panel: the surface fill, a strong hairline so it separates from the
-// page, the lg radius (the 8px ceiling) and a soft shadow. No arrows.
-export const popupSurface =
-  "rounded-lg border border-border-strong bg-surface text-text shadow-xl shadow-black/50 outline-hidden";
+// page, the lg radius (the 8px ceiling) and a soft shadow. No arrows. popupShape is the same
+// without the fill and border color, for a popup that sets its own (a toast tone).
+export const popupShape = "rounded-lg border text-text shadow-xl shadow-black/50 outline-hidden";
+export const popupSurface = `${popupShape} border-border-strong bg-surface`;
 
 // Opening and closing: a 150ms fade with a small scale from 97%, growing out of the side it
 // opens from. Reduced motion gets no transition.

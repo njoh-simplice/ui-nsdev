@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,8 +12,8 @@ export type MenuGroup = {
   items: { href: string; label: string }[];
 };
 
-// The menu is a ruler: every row is 36px tall and owns three evenly spaced lines — one
-// aligned with its label, then two short ones before the next row. The row's own line
+// The menu is a ruler: every row is 27px tall and owns three evenly spaced lines (9px apart) —
+// one aligned with its label, then two short ones before the next row. The row's own line
 // grows and turns green when it is active or hovered, which also pushes the label right.
 const line = "absolute left-0 h-px";
 
@@ -22,7 +22,7 @@ function Ticks({ active = false, interactive = false }: { active?: boolean; inte
     <span
       aria-hidden
       className={cx(
-        "relative h-9 shrink-0 transition-[width] duration-200 motion-reduce:transition-none",
+        "relative h-[27px] shrink-0 transition-[width] duration-200 motion-reduce:transition-none",
         active ? "w-17" : "w-11",
         interactive && !active && "group-hover:w-17",
       )}
@@ -30,13 +30,13 @@ function Ticks({ active = false, interactive = false }: { active?: boolean; inte
       <span
         className={cx(
           line,
-          "top-[17px] w-full transition-[background-color] duration-200 motion-reduce:transition-none",
+          "top-[13px] w-full transition-[background-color] duration-200 motion-reduce:transition-none",
           active ? "bg-accent" : "bg-border-strong",
           interactive && !active && "group-hover:bg-accent",
         )}
       />
-      <span className={cx(line, "top-[29px] w-11 bg-border-strong")} />
-      <span className={cx(line, "top-[41px] w-11 bg-border-strong")} />
+      <span className={cx(line, "top-[22px] w-11 bg-border-strong")} />
+      <span className={cx(line, "top-[31px] w-11 bg-border-strong")} />
     </span>
   );
 }
@@ -44,7 +44,39 @@ function Ticks({ active = false, interactive = false }: { active?: boolean; inte
 export function SideMenu({ groups }: { groups: MenuGroup[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  // Which edges of the list have more rows past them. Those edges fade out instead of showing
+  // a scrollbar, which is how the reader can tell the list goes on.
+  const [more, setMore] = useState({ above: false, below: false });
+  const measure = useCallback(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const above = nav.scrollTop > 1;
+    const below = nav.scrollTop + nav.clientHeight < nav.scrollHeight - 1;
+    setMore((prev) => (prev.above === above && prev.below === below ? prev : { above, below }));
+  }, []);
   const current = groups.flatMap((g) => g.items).find((item) => item.href === pathname);
+
+  // The list scrolls on its own, so bring the current page into view when it is off screen.
+  useEffect(() => {
+    const nav = navRef.current;
+    const link = nav?.querySelector<HTMLElement>("[aria-current=page]");
+    if (!nav || !link) return;
+    const n = nav.getBoundingClientRect();
+    const l = link.getBoundingClientRect();
+    if (l.top < n.top || l.bottom > n.bottom) nav.scrollTop += l.top - n.top - (n.height - l.height) / 2;
+    measure();
+  }, [pathname, measure]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
+  const fade = [
+    more.above ? "transparent 0, #000 40px" : "#000 0",
+    more.below ? "#000 calc(100% - 64px), transparent 100%" : "#000 100%",
+  ].join(", ");
 
   return (
     <div>
@@ -64,15 +96,22 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
       </Button>
 
       <nav
+        ref={navRef}
+        onScroll={measure}
+        style={{ maskImage: `linear-gradient(to bottom, ${fade})`, WebkitMaskImage: `linear-gradient(to bottom, ${fade})` }}
         id="side-menu"
         aria-label="Section"
-        className={cx("mt-4 lg:mt-0 lg:block", open ? "block" : "hidden")}
+        className={cx(
+          "mt-4 lg:-mx-1 lg:-mt-0.5 lg:block lg:max-h-[calc(100dvh-7.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:px-1 lg:pt-0.5 lg:pb-2",
+          "lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden",
+          open ? "block" : "hidden",
+        )}
       >
         {groups.map((group) => (
           <div key={group.title}>
-            <div className="flex h-9 items-center gap-3.5">
+            <div className="flex h-[27px] items-center gap-3.5">
               <Ticks />
-              <span className="text-base font-medium text-text">{group.title}</span>
+              <span className="text-base font-medium whitespace-nowrap text-text">{group.title}</span>
             </div>
             <ul>
               {group.items.map(({ href, label }) => {
@@ -83,7 +122,7 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
                       href={href}
                       aria-current={active ? "page" : undefined}
                       onClick={() => setOpen(false)}
-                      className="group flex h-9 items-center gap-3.5 rounded-sm text-base outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0 focus-visible:outline-text"
+                      className="group flex h-[27px] items-center gap-3.5 rounded-sm text-base outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0 focus-visible:outline-text"
                     >
                       <Ticks active={active} interactive />
                       <span
