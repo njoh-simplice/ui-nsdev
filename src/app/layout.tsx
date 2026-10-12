@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ui.nsdev.me"),
   title: {
-    default: "NSDEV UI",
+    default: "nsdev/ui | Own every Pixel of your Design System",
     template: "%s — NSDEV UI",
   },
   description:
