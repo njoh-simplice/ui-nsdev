@@ -8,6 +8,7 @@ import { meta as badge } from "./badge/meta";
 import { meta as button } from "./button/meta";
 import { meta as card } from "./card/meta";
 import { meta as checkbox } from "./checkbox/meta";
+import { meta as collapsible } from "./collapsible/meta";
 import { meta as field } from "./field/meta";
 import { meta as input } from "./input/meta";
 import { meta as kbd } from "./kbd/meta";
@@ -31,6 +32,7 @@ export const components = [
   button,
   card,
   checkbox,
+  collapsible,
   field,
   input,
   kbd,
