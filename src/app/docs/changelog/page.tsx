@@ -33,6 +33,10 @@ export default function Page() {
           through <code>data</code>, and <code>promise()</code> turns a loading toast into its result.
         </li>
         <li>
+          <strong>Toast close button:</strong> now just a quiet cross in the top right corner, lined up
+          with the first line of text, with no border.
+        </li>
+        <li>
           <strong>Toast loading type:</strong> <code>type: &quot;loading&quot;</code> shows a spinner and
           stays until it is updated or closed.
         </li>

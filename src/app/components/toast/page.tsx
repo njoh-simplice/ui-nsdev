@@ -53,9 +53,15 @@ export default function Page() {
         },
         {
           name: "data.position",
-          type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"',
+          type: "ToastPosition",
           default: '"bottom-right"',
-          description: "In add(). Where the toast appears. Toasts in the same place stack.",
+          description: (
+            <>
+              In add(). Where the toast appears: <code>top-left</code>, <code>top-center</code>,{" "}
+              <code>top-right</code>, <code>bottom-left</code>, <code>bottom-center</code> or{" "}
+              <code>bottom-right</code>. Toasts in the same place stack.
+            </>
+          ),
         },
         {
           name: "data.tone",
@@ -68,9 +74,15 @@ export default function Page() {
           description: "In add(). Replaces the whole body with your own layout. Build it with ToastTitle and ToastDescription so it is still announced.",
         },
         {
-          name: "promise(promise, { loading, success, error })",
+          name: "promise",
           type: "function",
-          description: "On useToast(). Shows a loading toast and turns it into a success or an error toast when the promise settles.",
+          description: (
+            <>
+              On <code>useToast()</code>. Call <code>promise(thePromise, {"{ loading, success, error }"})</code>{" "}
+              to show a loading toast that turns into a success or an error toast when the promise
+              settles. Each message is a string.
+            </>
+          ),
         },
       ]}
       propsNote="Toasts are created with useToast().add({ ... }) from any client component inside the ToastProvider. This site mounts one in the root layout. Every other option goes to the Base UI Toast underneath."

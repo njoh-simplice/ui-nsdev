@@ -85,7 +85,7 @@ function ToastItem({ toast, top }: { toast: BaseToast.Root.ToastObject<ToastData
       className={cx(
         popupShape,
         tones[data?.tone ?? "default"],
-        "pointer-events-auto relative flex items-start gap-3 p-4 pr-14 select-none",
+        "pointer-events-auto relative flex items-start gap-3 p-4 pr-11 select-none",
         "transition-[opacity,translate] duration-200 ease-out data-[starting-style]:opacity-0 data-[ending-style]:opacity-0 motion-reduce:transition-none",
         slide,
         "data-[type=success]:border-accent/40 data-[type=error]:border-danger/40",
@@ -96,7 +96,7 @@ function ToastItem({ toast, top }: { toast: BaseToast.Root.ToastObject<ToastData
           {icon && (
             <span
               aria-hidden
-              className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-lg leading-none [&_svg]:size-5"
+              className="mt-px flex size-5 shrink-0 items-center justify-center text-lg leading-none [&_svg]:size-5"
             >
               {icon}
             </span>
@@ -109,9 +109,13 @@ function ToastItem({ toast, top }: { toast: BaseToast.Root.ToastObject<ToastData
         </>
       )}
       <BaseToast.Close
-        render={<Button variant="secondary" size="icon" aria-label="Dismiss" className="absolute top-3 right-3" />}
+        aria-label="Dismiss"
+        className={cx(
+          "absolute top-[15px] right-3 flex size-6 cursor-pointer items-center justify-center rounded-sm text-text-secondary transition-colors after:absolute after:-inset-1.5 hover:text-text",
+          "outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text",
+        )}
       >
-        <X />
+        <X aria-hidden className="size-4" />
       </BaseToast.Close>
     </BaseToast.Root>
   );
