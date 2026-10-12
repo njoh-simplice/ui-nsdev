@@ -17,6 +17,64 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-12-components">Eleven new components</h2>
+      <p>
+        <time dateTime="2026-10-12">2026-10-12</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Avatar:</strong> an image with a fallback, three sizes and an overlapping group.
+          See <Link href="/components/avatar">Avatar</Link>.
+        </li>
+        <li>
+          <strong>Badge:</strong> a small status label, with success, warning and destructive
+          variants, that can render as a link. See <Link href="/components/badge">Badge</Link>.
+        </li>
+        <li>
+          <strong>Checkbox:</strong> checked, unchecked, indeterminate and disabled. See{" "}
+          <Link href="/components/checkbox">Checkbox</Link>.
+        </li>
+        <li>
+          <strong>Input:</strong> a text field with hover, focus, disabled and invalid states. See{" "}
+          <Link href="/components/input">Input</Link>.
+        </li>
+        <li>
+          <strong>Label:</strong> a label that dims along with a disabled control. See{" "}
+          <Link href="/components/label">Label</Link>.
+        </li>
+        <li>
+          <strong>Progress:</strong> a bar for known and unknown progress. See{" "}
+          <Link href="/components/progress">Progress</Link>.
+        </li>
+        <li>
+          <strong>Radio Group:</strong> pick one option from a list. See{" "}
+          <Link href="/components/radio-group">Radio Group</Link>.
+        </li>
+        <li>
+          <strong>Separator:</strong> a horizontal or vertical divider. See{" "}
+          <Link href="/components/separator">Separator</Link>.
+        </li>
+        <li>
+          <strong>Slider:</strong> a single value or a range of two. See{" "}
+          <Link href="/components/slider">Slider</Link>.
+        </li>
+        <li>
+          <strong>Switch:</strong> an on-off setting that works straight away. See{" "}
+          <Link href="/components/switch">Switch</Link>.
+        </li>
+        <li>
+          <strong>Toggle:</strong> a button that stays pressed. See{" "}
+          <Link href="/components/toggle">Toggle</Link>.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Components menu and index:</strong> they now list components from A to Z.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12-button">Button page, and a green default</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>
