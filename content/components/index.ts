@@ -16,6 +16,7 @@ import { meta as toggle } from "./toggle/meta";
 import { meta as alert } from "./alert/meta";
 import { meta as card } from "./card/meta";
 import { meta as kbd } from "./kbd/meta";
+import { meta as skeleton } from "./skeleton/meta";
 
 export const components = [
   avatar,
@@ -33,4 +34,5 @@ export const components = [
   alert,
   card,
   kbd,
+  skeleton,
 ];
