@@ -3,8 +3,10 @@
 // The order here doesn't matter: the menu and the index sort A to Z.
 import { meta as button } from "./button/meta";
 import { meta as avatar } from "./avatar/meta";
+import { meta as badge } from "./badge/meta";
 
 export const components = [
   button,
   avatar,
+  badge,
 ];
