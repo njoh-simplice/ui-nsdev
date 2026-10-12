@@ -21,7 +21,9 @@ export function SectionLayout({
         toc && "xl:grid-cols-[15rem_minmax(0,1fr)_15rem]",
       )}
     >
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+      {/* Below lg the menu button stays under the header while the page scrolls, and the open list
+          scrolls inside its own box; from lg the whole menu is a sticky column. */}
+      <aside className="sticky top-18 z-30 -my-2 self-start bg-bg py-2 lg:top-24 lg:z-auto lg:my-0 lg:bg-transparent lg:py-0">
         <SideMenu groups={menu} />
       </aside>
 

@@ -57,7 +57,8 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
   }, []);
   const current = groups.flatMap((g) => g.items).find((item) => item.href === pathname);
 
-  // The list scrolls on its own, so bring the current page into view when it is off screen.
+  // The list scrolls on its own, so bring the current page into view when it is off screen (also
+  // each time the small-screen list is opened).
   useEffect(() => {
     const nav = navRef.current;
     const link = nav?.querySelector<HTMLElement>("[aria-current=page]");
@@ -66,7 +67,7 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
     const l = link.getBoundingClientRect();
     if (l.top < n.top || l.bottom > n.bottom) nav.scrollTop += l.top - n.top - (n.height - l.height) / 2;
     measure();
-  }, [pathname, measure]);
+  }, [pathname, open, measure]);
 
   useEffect(() => {
     window.addEventListener("resize", measure);
@@ -102,8 +103,8 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
         id="side-menu"
         aria-label="Section"
         className={cx(
-          "mt-4 lg:-mx-1 lg:-mt-0.5 lg:block lg:max-h-[calc(100dvh-7.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:px-1 lg:pt-0.5 lg:pb-2",
-          "lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden",
+          "mt-4 max-h-[calc(100dvh-11rem)] overflow-y-auto overscroll-contain lg:-mx-1 lg:-mt-0.5 lg:block lg:max-h-[calc(100dvh-7.5rem)] lg:px-1 lg:pt-0.5 lg:pb-2",
+          "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
           open ? "block" : "hidden",
         )}
       >
