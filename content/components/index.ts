@@ -21,6 +21,7 @@ import { meta as label } from "./label/meta";
 import { meta as popover } from "./popover/meta";
 import { meta as progress } from "./progress/meta";
 import { meta as radioGroup } from "./radio-group/meta";
+import { meta as scrollArea } from "./scroll-area/meta";
 import { meta as select } from "./select/meta";
 import { meta as separator } from "./separator/meta";
 import { meta as skeleton } from "./skeleton/meta";
@@ -54,6 +55,7 @@ export const components = [
   popover,
   progress,
   radioGroup,
+  scrollArea,
   select,
   separator,
   skeleton,
