@@ -73,7 +73,7 @@ export default function Page() {
           },
           {
             label: "Status color:",
-            text: "A 9% fill and a 30% border in the status color, plus a 6px dot at full strength. The label stays in the main text color.",
+            text: "A 10% fill and a 30% border in the status color, plus a 6px dot at full strength. The label stays in the main text color.",
           },
           {
             label: "Neutral:",
