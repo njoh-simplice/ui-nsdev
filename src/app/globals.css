@@ -21,9 +21,10 @@
   --radius-lg: 8px;
 }
 
-/* The header is sticky, so anchor jumps and scrollIntoView stop below it (88px + a gap). */
+/* The header is sticky, so anchor jumps and scrollIntoView stop below it (64px on desktop,
+   72px on phones, plus a gap). */
 html {
-  scroll-padding-top: 7rem;
+  scroll-padding-top: 6rem;
 }
 
 body {

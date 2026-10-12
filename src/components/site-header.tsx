@@ -10,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       {/* Below lg: logo on the left, star button + hamburger on the right. */}
-      <div className="page-gutter flex h-18 w-full items-center justify-between lg:grid lg:h-22 lg:grid-cols-[1fr_auto_1fr]">
+      <div className="page-gutter flex h-18 w-full items-center justify-between lg:grid lg:h-16 lg:grid-cols-[1fr_auto_1fr]">
         <Link
           href="/"
           aria-label="NSDEV UI home"
