@@ -11,7 +11,7 @@ export function Hero() {
         <div className="lg:col-span-2">
           <Link
             href="/components"
-            className="inline-flex items-center gap-1.5 rounded-sm bg-surface px-2 py-0.5 text-[11px] font-medium text-text outline-none transition-colors hover:bg-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+            className="inline-flex items-center gap-1.5 rounded-sm bg-surface px-2 py-0.5 text-[11px] font-medium text-text outline-hidden transition-colors hover:bg-border focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text"
           >
             New component
             <ArrowRight aria-hidden className="size-3" />
@@ -51,7 +51,7 @@ export function Hero() {
             library follows, in minutes, not weeks.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Button render={<Link href="/docs" />} nativeButton={false}>
+            <Button variant="inverse" render={<Link href="/docs" />} nativeButton={false}>
               Get started
             </Button>
             <Button variant="secondary" render={<Link href="/components" />} nativeButton={false}>

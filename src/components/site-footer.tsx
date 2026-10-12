@@ -1,7 +1,7 @@
 import { AUTHOR_URL, GITHUB_URL } from "@/lib/site";
 
 const link =
-  "rounded-sm font-semibold text-text outline-none transition-colors hover:text-text/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text";
+  "rounded-sm font-semibold text-text outline-hidden transition-colors hover:text-text/60 focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text";
 
 export function SiteFooter() {
   return (

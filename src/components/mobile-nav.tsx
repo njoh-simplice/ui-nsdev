@@ -25,7 +25,7 @@ export function MobileNav() {
       <Drawer.Portal>
         <Drawer.Backdrop className="fixed inset-0 z-50 min-h-dvh bg-black opacity-[calc(0.6*(1-var(--drawer-swipe-progress)))] transition-opacity duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-swiping:duration-0 data-starting-style:opacity-0 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] motion-reduce:transition-none" />
         <Drawer.Viewport className="fixed inset-0 z-50 flex items-stretch justify-end">
-          <Drawer.Popup className="h-full w-80 max-w-[85vw] overflow-y-auto overscroll-contain border-l border-border bg-bg p-6 text-text outline-none [transform:translateX(var(--drawer-swipe-movement-x))] transition-transform duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-swiping:select-none data-starting-style:[transform:translateX(100%)] data-ending-style:[transform:translateX(100%)] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] motion-reduce:transition-none">
+          <Drawer.Popup className="h-full w-80 max-w-[85vw] overflow-y-auto overscroll-contain border-l border-border bg-bg p-6 text-text outline-hidden [transform:translateX(var(--drawer-swipe-movement-x))] transition-transform duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] data-swiping:select-none data-starting-style:[transform:translateX(100%)] data-ending-style:[transform:translateX(100%)] data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] motion-reduce:transition-none">
             <Drawer.Content>
               <div className="flex items-center justify-between">
                 <Drawer.Title className="text-base font-medium text-text-secondary">
@@ -49,8 +49,8 @@ export function MobileNav() {
                           aria-current={active ? "page" : undefined}
                           onClick={() => setOpen(false)}
                           className={cx(
-                            "block rounded-md py-3 outline-none transition-colors",
-                            "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-text",
+                            "block rounded-md py-3 outline-hidden transition-colors",
+                            "focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0 focus-visible:outline-text",
                             active ? "text-text" : "text-text-secondary hover:text-text",
                           )}
                         >

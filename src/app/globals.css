@@ -67,7 +67,7 @@ body {
     @apply font-semibold;
   }
   .doc-prose a {
-    @apply rounded-sm underline decoration-text-secondary underline-offset-4 transition-colors outline-none hover:decoration-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text;
+    @apply rounded-sm underline decoration-text-secondary underline-offset-4 transition-colors outline-hidden hover:decoration-text focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text;
   }
   .doc-prose pre {
     @apply overflow-x-auto rounded-lg border border-border bg-surface p-4 font-mono text-sm leading-6;
@@ -99,6 +99,24 @@ body {
   .doc-prose td[data-label]::before {
     @apply hidden text-text-secondary max-sm:inline;
     content: attr(data-label) ": ";
+  }
+  /* Syntax-highlighted code (Shiki). The block supplies its own background and border, so the
+     <pre> Shiki generates is flattened and given line numbers. */
+  .doc-prose .code-panel pre {
+    @apply m-0 overflow-x-auto rounded-none border-0 p-4 pr-14;
+    background: transparent !important;
+  }
+  .code-panel code {
+    counter-reset: line;
+  }
+  .code-panel .line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1.75rem;
+    margin-right: 1.25rem;
+    text-align: right;
+    color: var(--color-border-strong);
   }
   .doc-prose code {
     @apply rounded-sm bg-surface px-1.5 py-0.5 font-mono text-[0.875em];

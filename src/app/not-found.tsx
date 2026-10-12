@@ -17,7 +17,7 @@ export default function NotFound() {
         component at a time, so the page you want may simply not exist.
       </p>
       <div className="mt-6 flex flex-wrap gap-4">
-        <Button render={<Link href="/" />} nativeButton={false}>
+        <Button variant="inverse" render={<Link href="/" />} nativeButton={false}>
           Back to home
           <House aria-hidden className="size-4" />
         </Button>

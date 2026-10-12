@@ -19,7 +19,7 @@ const colorNotes: Record<string, string> = {
   "color-muted": "Structural only: dividers and disabled fills. Never text.",
   "color-text-secondary": "Labels, captions and larger text only.",
   "color-text": "Primary text.",
-  "color-accent": "Active and on states inside components.",
+  "color-accent": "The default button, and active and on states inside components.",
   "color-success": "Success states. The same green as accent.",
   "color-warning": "Warning states.",
   "color-danger": "Destructive actions and error states.",
