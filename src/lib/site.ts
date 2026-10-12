@@ -9,3 +9,9 @@ export const NAV_LINKS = [
   { href: "/pages", label: "Pages" },
   { href: "/dashboard", label: "Dashboard" },
 ];
+
+// "/" only matches itself; every other link also matches its sub-routes (/docs/button).
+export function isActivePath(href: string, pathname: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}

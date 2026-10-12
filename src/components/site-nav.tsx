@@ -3,25 +3,17 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cx } from "@/lib/cx";
-import { NAV_LINKS } from "@/lib/site";
+import { NAV_LINKS, isActivePath } from "@/lib/site";
 
-// "/" only matches itself; every other link also matches its sub-routes (/docs/button).
-function isActive(href: string, pathname: string) {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
-
+// Desktop nav. Below lg the header shows the drawer menu instead (see mobile-nav.tsx).
 export function SiteNav() {
   const pathname = usePathname();
 
   return (
-    <nav
-      aria-label="Main"
-      className="order-last col-span-2 -mx-1 overflow-x-auto lg:order-0 lg:col-span-1 lg:mx-0 lg:overflow-visible"
-    >
-      <ul className="flex items-center gap-1 text-lg font-medium">
+    <nav aria-label="Main" className="hidden lg:block">
+      <ul className="flex items-center gap-1 text-base font-medium">
         {NAV_LINKS.map(({ href, label }) => {
-          const active = isActive(href, pathname);
+          const active = isActivePath(href, pathname);
           return (
             <li key={href}>
               <Link

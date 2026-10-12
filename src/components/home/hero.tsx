@@ -17,13 +17,13 @@ export function Hero() {
             <ArrowRight aria-hidden className="size-3" />
           </Link>
 
-          <h1 className="mt-1.5 text-[2.75rem] leading-[1.05] font-bold text-text sm:text-[3.5rem]">
+          <h1 className="mt-1.5 text-[clamp(2rem,9.5vw,2.75rem)] leading-[1.05] font-bold text-text sm:text-[3.5rem]">
             <span className="block">Own every Pixel of</span>
             <span className="block">
               your <span className="text-text-secondary">Design System</span>
-              <span aria-hidden className="-mt-3 ml-4 inline-flex">
+              <span aria-hidden className="mt-3 flex sm:-mt-3 sm:ml-4 sm:inline-flex">
                 {/* Photo is scaled up around the face (about 38% down) so it fills the circle. */}
-                <span className="relative z-10 size-14 overflow-hidden rounded-full border-3 border-text">
+                <span className="relative z-10 size-12 overflow-hidden sm:size-14 rounded-full border-3 border-text">
                   <Image
                     src="/assets/images/profile.webp"
                     alt=""
@@ -37,7 +37,7 @@ export function Hero() {
                   alt=""
                   width={56}
                   height={56}
-                  className="-ml-10 size-14 rounded-full border-3 border-text object-cover"
+                  className="-ml-8 size-12 rounded-full sm:-ml-10 sm:size-14 border-3 border-text object-cover"
                 />
               </span>
             </span>
@@ -45,9 +45,9 @@ export function Hero() {
         </div>
 
         <div className="w-full max-w-105 lg:justify-self-end">
-          <p className="text-lg leading-snug text-text">
+          <p className="text-base leading-snug text-pretty text-text sm:text-lg">
             Every component ships fully styled. Swap in your own tokens{" "}
-            <span className="whitespace-nowrap">{"{ color, type, radius, … }"}</span> and the whole
+            <span className="sm:whitespace-nowrap">{"{ color, type, radius, … }"}</span> and the whole
             library follows, in minutes, not weeks.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
