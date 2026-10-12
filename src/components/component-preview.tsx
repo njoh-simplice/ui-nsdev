@@ -9,7 +9,7 @@ export async function ComponentPreview({ children, source }: { children: ReactNo
 
   return (
     <div className="overflow-hidden rounded-lg border border-border">
-      <div className="flex min-h-72 flex-wrap items-center justify-center gap-3 bg-bg p-8">
+      <div className="demo-reset flex min-h-72 flex-wrap items-center justify-center gap-3 bg-bg p-8">
         {children}
       </div>
       <CodePanel code={source} className="border-t border-border">
