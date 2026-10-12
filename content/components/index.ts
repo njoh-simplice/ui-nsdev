@@ -3,6 +3,7 @@
 // The order here doesn't matter: the menu and the index sort A to Z.
 import { meta as accordion } from "./accordion/meta";
 import { meta as alert } from "./alert/meta";
+import { meta as alertDialog } from "./alert-dialog/meta";
 import { meta as avatar } from "./avatar/meta";
 import { meta as badge } from "./badge/meta";
 import { meta as button } from "./button/meta";
@@ -32,6 +33,7 @@ import { meta as tooltip } from "./tooltip/meta";
 export const components = [
   accordion,
   alert,
+  alertDialog,
   avatar,
   badge,
   button,
