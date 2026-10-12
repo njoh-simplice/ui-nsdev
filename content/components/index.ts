@@ -7,6 +7,7 @@ import { meta as badge } from "./badge/meta";
 import { meta as checkbox } from "./checkbox/meta";
 import { meta as input } from "./input/meta";
 import { meta as label } from "./label/meta";
+import { meta as progress } from "./progress/meta";
 
 export const components = [
   button,
@@ -15,4 +16,5 @@ export const components = [
   checkbox,
   input,
   label,
+  progress,
 ];
