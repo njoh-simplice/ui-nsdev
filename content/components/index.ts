@@ -20,6 +20,7 @@ import { meta as skeleton } from "./skeleton/meta";
 import { meta as spinner } from "./spinner/meta";
 import { meta as textarea } from "./textarea/meta";
 import { meta as field } from "./field/meta";
+import { meta as toggleGroup } from "./toggle-group/meta";
 
 export const components = [
   avatar,
@@ -41,4 +42,5 @@ export const components = [
   spinner,
   textarea,
   field,
+  toggleGroup,
 ];
