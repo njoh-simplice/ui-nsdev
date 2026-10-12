@@ -9,6 +9,7 @@ import { meta as input } from "./input/meta";
 import { meta as label } from "./label/meta";
 import { meta as progress } from "./progress/meta";
 import { meta as radioGroup } from "./radio-group/meta";
+import { meta as separator } from "./separator/meta";
 
 export const components = [
   button,
@@ -19,4 +20,5 @@ export const components = [
   label,
   progress,
   radioGroup,
+  separator,
 ];
