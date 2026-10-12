@@ -8,7 +8,7 @@ import { GITHUB_URL } from "@/lib/site";
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-border">
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       {/* Below lg: logo on the left, star button + hamburger on the right. */}
       <div className="page-gutter flex h-18 w-full items-center justify-between lg:grid lg:h-22 lg:grid-cols-[1fr_auto_1fr]">
         <Link

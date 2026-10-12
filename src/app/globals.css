@@ -21,6 +21,11 @@
   --radius-lg: 8px;
 }
 
+/* The header is sticky, so anchor jumps and scrollIntoView stop below it (88px + a gap). */
+html {
+  scroll-padding-top: 7rem;
+}
+
 body {
   background: var(--color-bg);
   color: var(--color-text);
@@ -46,7 +51,7 @@ body {
     @apply text-sm leading-6 text-text/70;
   }
   .doc-prose h2 {
-    @apply mt-14 scroll-mt-8 text-2xl leading-tight font-semibold text-text;
+    @apply mt-14 text-2xl leading-tight font-semibold text-text;
   }
   .doc-prose h2 + * {
     @apply mt-3;
