@@ -22,9 +22,12 @@ export function SectionLayout({
       )}
     >
       {/* Below lg the menu button stays under the header while the page scrolls, and the open list
-          scrolls inside its own box; from lg the whole menu is a sticky column. */}
-      <aside className="sticky top-18 z-30 -my-2 self-start bg-bg py-2 lg:top-24 lg:z-auto lg:my-0 lg:bg-transparent lg:py-0">
-        <SideMenu groups={menu} />
+          scrolls inside its own box. From lg the menu is pinned to the viewport (fixed, not
+          sticky), because a sticky column is pushed up by the footer when the page ends. */}
+      <aside className="sticky top-18 z-30 -my-2 self-start bg-bg py-2 lg:static lg:z-auto lg:my-0 lg:bg-transparent lg:py-0">
+        <div className="lg:fixed lg:top-24 lg:w-60">
+          <SideMenu groups={menu} />
+        </div>
       </aside>
 
       <main id="content" className="mx-auto w-full max-w-3xl min-w-0">
