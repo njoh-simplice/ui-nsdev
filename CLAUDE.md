@@ -36,6 +36,8 @@ The header button is a GitHub link labelled "Give us a star" — no star count.
 Content lives in `content/{components,blocks,pages,dashboard}`. Each item is a
 `meta.ts` + `demo.tsx` pair.
 
+Import content with the `@content/*` alias (it maps to `content/*`).
+
 **Never hand-write example code for a component separately from its real source file.**
 Shiki must always read the actual source file (`demo.tsx`) — that is the entire point of
 the demo → source → page pipeline. If the displayed code and the rendered demo can

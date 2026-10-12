@@ -17,6 +17,50 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-12-button">Button page, and a green default</h2>
+      <p>
+        <time dateTime="2026-10-12">2026-10-12</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Button page:</strong> a live demo of every variant with its source, plus notes on
+          the design, the interaction and accessibility. See{" "}
+          <Link href="/components/button">Button</Link>.
+        </li>
+        <li>
+          <strong>Destructive variant:</strong> a danger fill for actions that remove something.
+        </li>
+        <li>
+          <strong>Inverse variant:</strong> the light fill the default button used to have, for
+          places where green isn&apos;t wanted.
+        </li>
+        <li>
+          <strong>Components section:</strong> its own menu on the left, and an index page.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Default Button:</strong> it now uses the green accent. The old light fill is the
+          <code>inverse</code> variant.
+        </li>
+        <li>
+          <strong>Pressed state:</strong> a pressed button shrinks to 97% with a 150ms animation.
+          Before, it moved 1px, and the animation never ran.
+        </li>
+        <li>
+          <strong>Icons in a button:</strong> they are 16px unless you size them yourself.
+        </li>
+      </ul>
+      <h3>Fixed</h3>
+      <ul>
+        <li>
+          <strong>Focus rings:</strong> keyboard focus was not visible on buttons and links across
+          the site. It now draws a 2px outline.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12">Foundations begin</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>

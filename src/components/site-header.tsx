@@ -30,6 +30,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3 lg:justify-self-end">
           <Button
+            variant="inverse"
             render={<a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" />}
             nativeButton={false}
           >

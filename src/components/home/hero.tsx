@@ -51,7 +51,7 @@ export function Hero() {
             library follows, in minutes, not weeks.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
-            <Button render={<Link href="/docs" />} nativeButton={false}>
+            <Button variant="inverse" render={<Link href="/docs" />} nativeButton={false}>
               Get started
             </Button>
             <Button variant="secondary" render={<Link href="/components" />} nativeButton={false}>
