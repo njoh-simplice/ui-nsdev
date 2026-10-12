@@ -19,6 +19,7 @@ import { meta as kbd } from "./kbd/meta";
 import { meta as skeleton } from "./skeleton/meta";
 import { meta as spinner } from "./spinner/meta";
 import { meta as textarea } from "./textarea/meta";
+import { meta as field } from "./field/meta";
 
 export const components = [
   avatar,
@@ -39,4 +40,5 @@ export const components = [
   skeleton,
   spinner,
   textarea,
+  field,
 ];
