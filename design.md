@@ -31,8 +31,9 @@ Single dark theme. No light mode yet — that is an open item under Polish.
 - **`accent` and `success` are one green.** The same `#00FF66` covers active/on states, the
   primary CTA, and success. Do not introduce a separate success color.
 - **Green belongs to the components, not the site chrome.** The website itself (header,
-  hero, footer, docs layout) stays neutral — `text` on `bg`, no `accent`. Green appears only
-  inside component demos, where it shows a component's active/on/success states.
+  hero, footer, docs layout) stays neutral — `text` on `bg`, no `accent`. Green appears
+  inside component demos, where it shows a component's active/on/success states, and on one
+  piece of chrome: the active item of a section's left menu (Doc, Components, …).
 - **Solid semantic fills pair with `bg` on top.** Any solid fill of `accent`, `success`,
   `warning`, or `danger` uses `bg` (`#0A0A0A`) as the text/icon color on top — never `text`.
   Light-on-fill contrast fails badly on all four (as low as 1.08:1); dark-on-fill is

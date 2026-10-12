@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ui.nsdev.me"),
   title: {
     default: "nsdev/ui | Own every Pixel of your Design System",
-    template: "%s — NSDEV UI",
+    template: "%s - nsdev/ui",
   },
   description:
     "A component library built on Base UI and Tailwind. Every component ships fully styled — swap in your own tokens.",
