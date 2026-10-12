@@ -10,6 +10,7 @@ import { meta as card } from "./card/meta";
 import { meta as checkbox } from "./checkbox/meta";
 import { meta as collapsible } from "./collapsible/meta";
 import { meta as field } from "./field/meta";
+import { meta as hoverCard } from "./hover-card/meta";
 import { meta as input } from "./input/meta";
 import { meta as kbd } from "./kbd/meta";
 import { meta as label } from "./label/meta";
@@ -37,6 +38,7 @@ export const components = [
   checkbox,
   collapsible,
   field,
+  hoverCard,
   input,
   kbd,
   label,
