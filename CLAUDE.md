@@ -60,6 +60,22 @@ block (`bg-bg`, `text-accent`, `border-border`, `rounded-md`, `font-mono`, …).
 6. Dashboard — highest complexity, last.
 7. Polish — dark/light mode, motion vocabulary, consistent focus rings.
 
+## Git workflow
+
+- `main` is always deployable and auto-deploys to Vercel. **Never commit or push directly
+  to `main`.**
+- Every piece of work gets its own short-lived branch, cut from an up-to-date `main` and
+  named `type/short-description`, where type is `feat` (new component, block or page),
+  `docs`, `fix` or `chore` — e.g. `feat/button-page`, `fix/nav-active-state`.
+- One concern per commit. Commit messages are short imperative sentences ("Add Button
+  states").
+- Land work through a pull request and **squash-merge** it, so each piece is one commit on
+  `main`. Delete the branch afterwards.
+- A change to the library (a component or a token) adds an entry to the changelog in the
+  same branch. Site-only tweaks (header, hero, layout) don't.
+- The `gh` CLI isn't installed. Push the branch, then open the PR from
+  `https://github.com/njoh-simplice/ui-nsdev/compare/<branch>?expand=1`.
+
 ## Deployment
 
 - Repo is public: https://github.com/njoh-simplice/ui-nsdev (the header CTA and footer
