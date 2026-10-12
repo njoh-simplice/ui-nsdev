@@ -30,6 +30,7 @@ import { meta as spinner } from "./spinner/meta";
 import { meta as switchMeta } from "./switch/meta";
 import { meta as tabs } from "./tabs/meta";
 import { meta as textarea } from "./textarea/meta";
+import { meta as toast } from "./toast/meta";
 import { meta as toggle } from "./toggle/meta";
 import { meta as toggleGroup } from "./toggle-group/meta";
 import { meta as tooltip } from "./tooltip/meta";
@@ -64,6 +65,7 @@ export const components = [
   switchMeta,
   tabs,
   textarea,
+  toast,
   toggle,
   toggleGroup,
   tooltip,
