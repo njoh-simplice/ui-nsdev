@@ -10,6 +10,7 @@ import { meta as button } from "./button/meta";
 import { meta as card } from "./card/meta";
 import { meta as checkbox } from "./checkbox/meta";
 import { meta as collapsible } from "./collapsible/meta";
+import { meta as contextMenu } from "./context-menu/meta";
 import { meta as dialog } from "./dialog/meta";
 import { meta as dropdownMenu } from "./dropdown-menu/meta";
 import { meta as field } from "./field/meta";
@@ -41,6 +42,7 @@ export const components = [
   card,
   checkbox,
   collapsible,
+  contextMenu,
   dialog,
   dropdownMenu,
   field,
