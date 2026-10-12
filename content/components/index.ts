@@ -21,6 +21,7 @@ import { meta as label } from "./label/meta";
 import { meta as popover } from "./popover/meta";
 import { meta as progress } from "./progress/meta";
 import { meta as radioGroup } from "./radio-group/meta";
+import { meta as select } from "./select/meta";
 import { meta as separator } from "./separator/meta";
 import { meta as skeleton } from "./skeleton/meta";
 import { meta as slider } from "./slider/meta";
@@ -53,6 +54,7 @@ export const components = [
   popover,
   progress,
   radioGroup,
+  select,
   separator,
   skeleton,
   slider,
