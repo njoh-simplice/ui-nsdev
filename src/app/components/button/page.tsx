@@ -28,8 +28,8 @@ export default async function Page() {
 
       <h2 id="the-code">The code</h2>
       <p>
-        The component is a single file. This is that file in full, read from the repository when
-        the site is built.
+        The component is a single file, read from the repository when the site is built. Press
+        Show code to see all of it.
       </p>
       <CodeBlock code={buttonSource} lang="tsx" />
       <h3>Props</h3>
