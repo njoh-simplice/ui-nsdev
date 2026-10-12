@@ -24,6 +24,7 @@ import { meta as tabs } from "./tabs/meta";
 import { meta as textarea } from "./textarea/meta";
 import { meta as toggle } from "./toggle/meta";
 import { meta as toggleGroup } from "./toggle-group/meta";
+import { meta as tooltip } from "./tooltip/meta";
 
 export const components = [
   accordion,
@@ -49,4 +50,5 @@ export const components = [
   textarea,
   toggle,
   toggleGroup,
+  tooltip,
 ];
