@@ -55,7 +55,7 @@ export function OnThisPage() {
               href={`#${id}`}
               aria-current={id === activeId ? "location" : undefined}
               className={cx(
-                "block rounded-sm py-1.5 text-base outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-text",
+                "block rounded-sm py-1.5 text-base outline-hidden transition-colors focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0 focus-visible:outline-text",
                 id === activeId ? "text-text" : "text-text-secondary hover:text-text",
               )}
             >

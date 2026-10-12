@@ -11,7 +11,7 @@ const base = [
   "inline-flex h-9 items-center justify-center gap-2 whitespace-nowrap rounded-md border",
   "text-base font-semibold select-none cursor-pointer",
   "transition-[background-color,border-color,color,transform] duration-100",
-  "outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text",
+  "outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text",
   "not-data-[disabled]:active:translate-y-px",
   "data-[disabled]:cursor-not-allowed data-[disabled]:border-border data-[disabled]:bg-surface data-[disabled]:text-text-secondary",
 ].join(" ");

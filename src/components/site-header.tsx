@@ -14,7 +14,7 @@ export function SiteHeader() {
         <Link
           href="/"
           aria-label="NSDEV UI home"
-          className="justify-self-start rounded-full outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+          className="justify-self-start rounded-full outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text"
         >
           <Image
             src="/assets/images/logo.png"

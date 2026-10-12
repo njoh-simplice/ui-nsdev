@@ -83,7 +83,7 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
                       href={href}
                       aria-current={active ? "page" : undefined}
                       onClick={() => setOpen(false)}
-                      className="group flex h-9 items-center gap-3.5 rounded-sm text-base outline-none focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-text"
+                      className="group flex h-9 items-center gap-3.5 rounded-sm text-base outline-hidden focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-0 focus-visible:outline-text"
                     >
                       <Ticks active={active} interactive />
                       <span
