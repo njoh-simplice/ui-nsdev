@@ -1,6 +1,7 @@
 // Every component on the site. To add one: create content/components/<slug>/ with a
 // meta.ts and a demo.tsx, add the page under src/app/components/<slug>/, and list its meta here.
 // The order here doesn't matter: the menu and the index sort A to Z.
+import { meta as accordion } from "./accordion/meta";
 import { meta as alert } from "./alert/meta";
 import { meta as avatar } from "./avatar/meta";
 import { meta as badge } from "./badge/meta";
@@ -23,6 +24,7 @@ import { meta as toggle } from "./toggle/meta";
 import { meta as toggleGroup } from "./toggle-group/meta";
 
 export const components = [
+  accordion,
   alert,
   avatar,
   badge,
