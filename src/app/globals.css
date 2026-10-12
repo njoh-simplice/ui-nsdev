@@ -39,6 +39,16 @@ body {
   padding-inline: clamp(1rem, 5vw, 1.25rem);
 }
 
+/* The sliding bar of an indeterminate Progress (see components/ui/progress.tsx). */
+@keyframes progress-indeterminate {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 300% 0;
+  }
+}
+
 /* Long-form content (docs). Wrap page content in .doc-prose. Write sections as
    <h2 id="..."> so they appear in the "On this page" column. */
 @layer components {
