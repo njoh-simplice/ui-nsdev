@@ -28,10 +28,9 @@ body {
 }
 
 /* Full-bleed page gutter: no max-width, so content follows the viewport. The side margin
-   is 5vw, kept between 24px (phones) and 100px (very wide screens), so a laptop doesn't
-   lose a sixth of its width to margins. */
+   is 5vw, never more than 20px, and shrinks to 16px on very narrow phones. */
 @utility page-gutter {
-  padding-inline: clamp(1.5rem, 5vw, 6.25rem);
+  padding-inline: clamp(1rem, 5vw, 1.25rem);
 }
 
 /* Long-form content (docs). Wrap page content in .doc-prose. Write sections as
