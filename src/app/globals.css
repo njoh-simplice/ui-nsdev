@@ -44,7 +44,7 @@ body {
     @apply mt-4;
   }
   .doc-prose .lead {
-    @apply text-xl leading-8;
+    @apply text-sm leading-6 text-text/70;
   }
   .doc-prose h2 {
     @apply mt-14 scroll-mt-8 text-2xl leading-tight font-semibold text-text;
