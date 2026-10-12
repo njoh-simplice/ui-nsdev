@@ -20,7 +20,7 @@ export function SectionLayout({
         toc && "xl:grid-cols-[14rem_minmax(0,1fr)_14rem]",
       )}
     >
-      <aside className="lg:sticky lg:top-30 lg:self-start">
+      <aside className="lg:sticky lg:top-24 lg:self-start">
         <SideMenu groups={menu} />
       </aside>
 
@@ -29,7 +29,7 @@ export function SectionLayout({
       </main>
 
       {toc && (
-        <aside className="hidden xl:sticky xl:top-30 xl:block xl:self-start">
+        <aside className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
           <OnThisPage />
         </aside>
       )}
