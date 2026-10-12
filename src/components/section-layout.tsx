@@ -16,8 +16,8 @@ export function SectionLayout({
   return (
     <div
       className={cx(
-        "page-gutter grid w-full flex-1 content-start gap-8 pt-10 pb-20 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-12 lg:pt-14",
-        toc && "xl:grid-cols-[14rem_minmax(0,1fr)_14rem]",
+        "page-gutter grid w-full flex-1 content-start gap-8 pt-10 pb-20 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12 lg:pt-14",
+        toc && "xl:grid-cols-[15rem_minmax(0,1fr)_14rem]",
       )}
     >
       <aside className="lg:sticky lg:top-24 lg:self-start">
