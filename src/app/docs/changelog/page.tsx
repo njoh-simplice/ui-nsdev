@@ -17,6 +17,77 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-12-overlays-and-menus">Overlays, menus and feedback</h2>
+      <p>
+        <time dateTime="2026-10-12">2026-10-12</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Accordion:</strong> a stack of sections that open and close. See{" "}
+          <Link href="/components/accordion">Accordion</Link>.
+        </li>
+        <li>
+          <strong>Alert Dialog:</strong> a dialog for a question that has to be answered. See{" "}
+          <Link href="/components/alert-dialog">Alert Dialog</Link>.
+        </li>
+        <li>
+          <strong>Collapsible:</strong> one section with a button that opens it. See{" "}
+          <Link href="/components/collapsible">Collapsible</Link>.
+        </li>
+        <li>
+          <strong>Context Menu:</strong> a menu that opens where you right-click. See{" "}
+          <Link href="/components/context-menu">Context Menu</Link>.
+        </li>
+        <li>
+          <strong>Dialog:</strong> a window over the page that holds focus. See{" "}
+          <Link href="/components/dialog">Dialog</Link>.
+        </li>
+        <li>
+          <strong>Dropdown Menu:</strong> a list of actions that opens from a button. See{" "}
+          <Link href="/components/dropdown-menu">Dropdown Menu</Link>.
+        </li>
+        <li>
+          <strong>Hover Card:</strong> a preview that opens when you hover or focus a link. See{" "}
+          <Link href="/components/hover-card">Hover Card</Link>.
+        </li>
+        <li>
+          <strong>Popover:</strong> a floating panel that opens from a button. See{" "}
+          <Link href="/components/popover">Popover</Link>.
+        </li>
+        <li>
+          <strong>Scroll Area:</strong> a scrolling region with themed scrollbars. See{" "}
+          <Link href="/components/scroll-area">Scroll Area</Link>.
+        </li>
+        <li>
+          <strong>Select:</strong> choose one value from a list. See{" "}
+          <Link href="/components/select">Select</Link>.
+        </li>
+        <li>
+          <strong>Tabs:</strong> panels you switch between with a row of tabs. See{" "}
+          <Link href="/components/tabs">Tabs</Link>.
+        </li>
+        <li>
+          <strong>Toast:</strong> a short message that goes away by itself. See{" "}
+          <Link href="/components/toast">Toast</Link>.
+        </li>
+        <li>
+          <strong>Tooltip:</strong> a small label for hover and focus. See{" "}
+          <Link href="/components/tooltip">Tooltip</Link>.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Components menu:</strong> it now has four groups: Foundations, Form controls,
+          Disclosure &amp; Overlays, and Menus &amp; Feedback.
+        </li>
+        <li>
+          <strong>Overlays share one look:</strong> every popup uses the same surface, motion and
+          stacking order.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12-more-components">Eight more components</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>

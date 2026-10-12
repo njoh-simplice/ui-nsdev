@@ -90,3 +90,26 @@ Ceiling is **8px**. Scale by component size — not one flat value everywhere.
 These override Tailwind's built-in `rounded-sm` / `rounded-md` / `rounded-lg` scale, so
 those are the utility names to use — e.g. `rounded-md` on a button, `rounded-lg` on a
 dialog. Nothing in the system rounds past 8px.
+
+---
+
+## Overlays
+
+Everything that opens over the page — tooltip, popover, hover card, dropdown menu, context
+menu, select, dialog, alert dialog and toast — shares the decisions below. They live in
+`src/lib/styles.ts` as `popupSurface`, `popupMotion`, `backdropStyles`, `menuItemStyles` and
+`menuItemTones`, so changing one changes them all.
+
+- **Surface:** `bg-surface`, a `border-strong` hairline, `rounded-lg` (the 8px ceiling) and a
+  soft black shadow. No arrows — the gap to the trigger is enough.
+- **Motion:** a 150ms fade with a scale from 97%, growing out of the side the popup opens
+  from. Reduced motion gets no transition. Toasts use 200ms and slide up instead.
+- **Backdrop:** black at 60%, for dialogs only. Popovers, menus and tooltips have none.
+- **Stacking:** one scale — sticky header `z-40`, popups and dialogs `z-50`, toasts `z-60`
+  so a message stays visible over an open dialog.
+- **Menu rows:** the dropdown menu and context menu share one row: `px-2 py-1.5`, `rounded-sm`,
+  a 10% wash of the text color when highlighted (red for destructive rows), ticks and radio
+  dots in a left column, shortcuts at the right end.
+- **Dismissal:** every overlay closes on Escape and returns focus to what opened it. Dialogs
+  trap focus and lock page scroll; an alert dialog also ignores backdrop clicks, because it
+  asks a question that has to be answered.
