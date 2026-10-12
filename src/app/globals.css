@@ -67,16 +67,18 @@ body {
   .doc-prose h2 + * {
     @apply mt-3;
   }
-  .doc-prose h3 {
+  /* The live demos sit inside .doc-prose. Their wrapper has .demo-reset, so the page text styles
+     that would change a component (heading margins, list padding, link underlines) skip it. */
+  .doc-prose h3:not(.demo-reset *) {
     @apply mt-8 text-xl leading-tight font-semibold text-text;
   }
-  .doc-prose ul {
+  .doc-prose ul:not(.demo-reset *) {
     @apply list-disc space-y-2 pl-5 marker:text-text-secondary;
   }
   .doc-prose strong {
     @apply font-semibold;
   }
-  .doc-prose a {
+  .doc-prose a:not(.demo-reset *) {
     @apply rounded-sm underline decoration-text-secondary underline-offset-4 transition-colors outline-hidden hover:decoration-text focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-text;
   }
   .doc-prose pre {
