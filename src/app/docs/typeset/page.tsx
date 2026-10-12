@@ -92,9 +92,9 @@ export default function Page() {
             </tr>
             <tr>
               <td className="whitespace-nowrap">Lead</td>
-              <td data-label="Size" className="whitespace-nowrap">20px</td>
+              <td data-label="Size" className="whitespace-nowrap">14px</td>
               <td data-label="Weight">Regular</td>
-              <td data-label="Used for">The opening paragraph of a page.</td>
+              <td data-label="Used for">The opening paragraph of a page, in a duller color.</td>
             </tr>
             <tr>
               <td className="whitespace-nowrap">Body</td>
