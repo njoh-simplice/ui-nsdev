@@ -17,6 +17,53 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-12-more-components">Eight more components</h2>
+      <p>
+        <time dateTime="2026-10-12">2026-10-12</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Alert:</strong> a message in the page, in four tones. See{" "}
+          <Link href="/components/alert">Alert</Link>.
+        </li>
+        <li>
+          <strong>Card:</strong> a raised surface built from a header, content and footer. See{" "}
+          <Link href="/components/card">Card</Link>.
+        </li>
+        <li>
+          <strong>Field:</strong> joins a label, a control, a hint and an error, with a Fieldset for groups. See{" "}
+          <Link href="/components/field">Field</Link>.
+        </li>
+        <li>
+          <strong>Kbd:</strong> a keyboard key. See{" "}
+          <Link href="/components/kbd">Kbd</Link>.
+        </li>
+        <li>
+          <strong>Skeleton:</strong> a placeholder that holds the shape of loading content. See{" "}
+          <Link href="/components/skeleton">Skeleton</Link>.
+        </li>
+        <li>
+          <strong>Spinner:</strong> a ring for something that is happening for an unknown time. See{" "}
+          <Link href="/components/spinner">Spinner</Link>.
+        </li>
+        <li>
+          <strong>Textarea:</strong> a multi-line text field. See{" "}
+          <Link href="/components/textarea">Textarea</Link>.
+        </li>
+        <li>
+          <strong>Toggle Group:</strong> a row of toggles, to pick one or several. See{" "}
+          <Link href="/components/toggle-group">Toggle Group</Link>.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Components menu:</strong> it now has two groups, Foundations and Form controls.
+          Checkbox, Input, Label, Radio Group, Slider, Switch and Toggle moved to Form controls.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12-components">Eleven new components</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>
