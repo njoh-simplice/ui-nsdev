@@ -13,6 +13,7 @@ import { meta as field } from "./field/meta";
 import { meta as input } from "./input/meta";
 import { meta as kbd } from "./kbd/meta";
 import { meta as label } from "./label/meta";
+import { meta as popover } from "./popover/meta";
 import { meta as progress } from "./progress/meta";
 import { meta as radioGroup } from "./radio-group/meta";
 import { meta as separator } from "./separator/meta";
@@ -39,6 +40,7 @@ export const components = [
   input,
   kbd,
   label,
+  popover,
   progress,
   radioGroup,
   separator,
