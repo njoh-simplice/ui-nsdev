@@ -27,10 +27,11 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Full-bleed page gutter: no max-width, so content follows the viewport.
-   100px at xl matches the home page design. */
+/* Full-bleed page gutter: no max-width, so content follows the viewport. The side margin
+   is 5vw, kept between 24px (phones) and 100px (very wide screens), so a laptop doesn't
+   lose a sixth of its width to margins. */
 @utility page-gutter {
-  @apply px-6 md:px-12 xl:px-25;
+  padding-inline: clamp(1.5rem, 5vw, 6.25rem);
 }
 
 /* Long-form content (docs). Wrap page content in .doc-prose. Write sections as
