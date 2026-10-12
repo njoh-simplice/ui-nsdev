@@ -4,9 +4,15 @@
 import { meta as button } from "./button/meta";
 import { meta as avatar } from "./avatar/meta";
 import { meta as badge } from "./badge/meta";
+import { meta as checkbox } from "./checkbox/meta";
+import { meta as input } from "./input/meta";
+import { meta as label } from "./label/meta";
 
 export const components = [
   button,
   avatar,
   badge,
+  checkbox,
+  input,
+  label,
 ];
