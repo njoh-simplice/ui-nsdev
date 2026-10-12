@@ -12,6 +12,7 @@ import { meta as radioGroup } from "./radio-group/meta";
 import { meta as separator } from "./separator/meta";
 import { meta as slider } from "./slider/meta";
 import { meta as switchMeta } from "./switch/meta";
+import { meta as toggle } from "./toggle/meta";
 
 export const components = [
   button,
@@ -25,4 +26,5 @@ export const components = [
   separator,
   slider,
   switchMeta,
+  toggle,
 ];
