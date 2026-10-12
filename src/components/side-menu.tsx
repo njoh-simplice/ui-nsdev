@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,6 +45,16 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  // Which edges of the list have more rows past them. Those edges fade out instead of showing
+  // a scrollbar, which is how the reader can tell the list goes on.
+  const [more, setMore] = useState({ above: false, below: false });
+  const measure = useCallback(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const above = nav.scrollTop > 1;
+    const below = nav.scrollTop + nav.clientHeight < nav.scrollHeight - 1;
+    setMore((prev) => (prev.above === above && prev.below === below ? prev : { above, below }));
+  }, []);
   const current = groups.flatMap((g) => g.items).find((item) => item.href === pathname);
 
   // The list scrolls on its own, so bring the current page into view when it is off screen.
@@ -55,7 +65,18 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
     const n = nav.getBoundingClientRect();
     const l = link.getBoundingClientRect();
     if (l.top < n.top || l.bottom > n.bottom) nav.scrollTop += l.top - n.top - (n.height - l.height) / 2;
-  }, [pathname]);
+    measure();
+  }, [pathname, measure]);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
+
+  const fade = [
+    more.above ? "transparent 0, #000 40px" : "#000 0",
+    more.below ? "#000 calc(100% - 64px), transparent 100%" : "#000 100%",
+  ].join(", ");
 
   return (
     <div>
@@ -76,11 +97,13 @@ export function SideMenu({ groups }: { groups: MenuGroup[] }) {
 
       <nav
         ref={navRef}
+        onScroll={measure}
+        style={{ maskImage: `linear-gradient(to bottom, ${fade})`, WebkitMaskImage: `linear-gradient(to bottom, ${fade})` }}
         id="side-menu"
         aria-label="Section"
         className={cx(
           "mt-4 lg:-mx-1 lg:-mt-0.5 lg:block lg:max-h-[calc(100dvh-7.5rem)] lg:overflow-y-auto lg:overscroll-contain lg:px-1 lg:pt-0.5 lg:pb-2",
-          "lg:[scrollbar-color:var(--color-border-strong,#404040)_transparent] lg:[scrollbar-width:thin]",
+          "lg:[scrollbar-width:none] lg:[&::-webkit-scrollbar]:hidden",
           open ? "block" : "hidden",
         )}
       >

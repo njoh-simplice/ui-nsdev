@@ -5,7 +5,7 @@ const link =
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 pb-14 text-center text-base text-text-secondary lg:mt-36">
+    <footer className="mt-6 pb-10 text-center text-base text-text-secondary">
       <p className="px-6">
         Built by{" "}
         <a href={AUTHOR_URL} className={link}>
