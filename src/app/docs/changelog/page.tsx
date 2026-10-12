@@ -17,6 +17,27 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-12-toast-examples">Ten toast examples</h2>
+      <p>
+        <time dateTime="2026-10-12">2026-10-12</time>
+      </p>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Toast:</strong> now compact, with an icon before the text. The page shows ten
+          examples: success, error, promise, multi line, emoji, dark, JSX content, themed, custom
+          position and a fully custom layout. See <Link href="/components/toast">Toast</Link>.
+        </li>
+        <li>
+          <strong>Toast options:</strong> a toast takes an icon, one of six positions and a tone
+          through <code>data</code>, and <code>promise()</code> turns a loading toast into its result.
+        </li>
+        <li>
+          <strong>Toast loading type:</strong> <code>type: &quot;loading&quot;</code> shows a spinner and
+          stays until it is updated or closed.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12-overlays-and-menus">Overlays, menus and feedback</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>
