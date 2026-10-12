@@ -8,6 +8,7 @@ import { meta as checkbox } from "./checkbox/meta";
 import { meta as input } from "./input/meta";
 import { meta as label } from "./label/meta";
 import { meta as progress } from "./progress/meta";
+import { meta as radioGroup } from "./radio-group/meta";
 
 export const components = [
   button,
@@ -17,4 +18,5 @@ export const components = [
   input,
   label,
   progress,
+  radioGroup,
 ];

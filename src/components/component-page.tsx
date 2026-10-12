@@ -84,8 +84,8 @@ export async function ComponentPage({
             </tr>
           </thead>
           <tbody>
-            {props.map((row) => (
-              <tr key={row.name}>
+            {props.map((row, index) => (
+              <tr key={`${row.name}-${index}`}>
                 <td className="whitespace-nowrap">
                   <code>{row.name}</code>
                 </td>
