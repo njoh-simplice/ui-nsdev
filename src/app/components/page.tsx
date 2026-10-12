@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DocPage } from "@/components/doc-page";
-import { components } from "@content/components";
+import { SORTED_COMPONENTS } from "@/lib/components";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -16,7 +16,7 @@ export default function Page() {
         added as they are built.
       </p>
       <ul>
-        {components.map((meta) => (
+        {SORTED_COMPONENTS.map((meta) => (
           <li key={meta.slug}>
             <Link href={`/components/${meta.slug}`}>{meta.title}</Link>: {meta.description}
           </li>
