@@ -9,11 +9,17 @@ import { focusRing } from "@/lib/styles";
 const links = ["Home", "Product", "Pricing", "Contact"];
 
 const contact = [
-  { label: "hello@example.com", href: "mailto:hello@example.com" },
-  { label: "+1 (555) 000-0000", href: "tel:+15550000000" },
+  { label: "contact@nsdev.me", href: "mailto:contact@nsdev.me" },
+  { label: "(+237) 652 02 59 01", href: "tel:+237652025901" },
 ];
 
-const social = ["LinkedIn", "GitHub", "X"];
+const address = "Yaoundé, Cameroon";
+
+const social = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/njoh-simplice-junior/" },
+  { label: "GitHub", href: "https://github.com/njoh-simplice" },
+  { label: "X", href: "https://x.com/njoh_simplice" },
+];
 
 // How the card and its contents move. The card opens with a long ease-out, and each piece of
 // content slides up out of its own line (a clipped row) a little after the one before it.
@@ -272,16 +278,23 @@ export default function Navigation1() {
                         {label}
                       </a>
                     ))}
-                    <p className="text-text/70">123 Main Street, Your City</p>
+                    <p className="text-text/70">{address}</p>
                   </div>
                 </div>
                 {/* Follow us sits against the right edge, with the same three rows as Contact. */}
                 <div className="-m-1 overflow-hidden p-1">
                   <div style={stagger(open, links.length + 1)} className={cx("flex flex-col items-end gap-1.5", rise(open))}>
                     <p className="text-text/70">Follow us</p>
-                    {social.map((label) => (
-                      <a key={label} href="#" className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing)}>
+                    {social.map(({ label, href }) => (
+                      <a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing)}
+                      >
                         {label}
+                        <span className="sr-only"> (opens in a new tab)</span>
                         <ArrowUpRight aria-hidden className="size-3.5" />
                       </a>
                     ))}
