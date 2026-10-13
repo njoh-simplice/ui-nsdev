@@ -2,5 +2,5 @@ export const meta = {
   title: "Button",
   slug: "button",
   group: "Foundations",
-  description: "A button that triggers an action, with three intents, an icon and an icon-only form.",
+  description: "A button that triggers an action, with four intents, two sizes, an icon and icon-only forms.",
 } as const;

@@ -1,8 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ScrambleOnHover } from "@/components/ui/scramble-on-hover";
 import { cx } from "@/lib/cx";
 import { focusRing } from "@/lib/styles";
 
@@ -45,44 +47,6 @@ const soft = (open: boolean, move = true) =>
     open ? "translate-y-0 opacity-100 duration-700" : cx("opacity-0 duration-200", move ? "translate-y-2" : "translate-y-0"),
   );
 
-const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+?";
-
-// On hover the letters of a word flicker through random characters, settling on the real ones
-// from left to right. The real word is always what a screen reader gets (see NavLink), and
-// nothing happens for people who ask their system for reduced motion.
-function useScramble(text: string) {
-  const [display, setDisplay] = useState(text);
-  const timer = useRef<number | undefined>(undefined);
-
-  const stop = useCallback(() => {
-    window.clearInterval(timer.current);
-    setDisplay(text);
-  }, [text]);
-
-  const start = useCallback(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    window.clearInterval(timer.current);
-    const began = performance.now();
-    timer.current = window.setInterval(() => {
-      const elapsed = performance.now() - began;
-      let settled = true;
-      const next = [...text]
-        .map((char, index) => {
-          if (elapsed >= 150 + index * 80) return char;
-          settled = false;
-          return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-        })
-        .join("");
-      setDisplay(next);
-      if (settled) window.clearInterval(timer.current);
-    }, 40);
-  }, [text]);
-
-  useEffect(() => () => window.clearInterval(timer.current), []);
-
-  return { display, start, stop };
-}
-
 function NavLink({
   label,
   current,
@@ -96,44 +60,38 @@ function NavLink({
   step: number;
   onChoose: () => void;
 }) {
-  const { display, start, stop } = useScramble(label);
-
   return (
     // The row clips its link, so the link slides up from underneath it. The padding and
     // negative margin keep the focus ring from being cut off.
     <li className="-m-1 overflow-hidden p-1">
-      <a
-        href="#"
-        aria-label={label}
-        aria-current={current ? "page" : undefined}
-        style={stagger(open, step)}
-        onPointerEnter={(event) => event.pointerType === "mouse" && start()}
-        onPointerLeave={stop}
-        onClick={(event) => {
-          event.preventDefault();
-          onChoose();
-        }}
-        className={cx(
-          "group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase",
-          focusRing,
-          rise(open),
-        )}
-      >
-        {/* A short green line that grows in front of the current or hovered link. */}
-        <span
-          aria-hidden
-          className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-300 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
-        />
-        {/* The real word holds the width, so the scrambled letters never move the layout. */}
-        <span className="grid transition-colors duration-300 group-hover:text-accent group-aria-[current=page]:text-accent motion-reduce:transition-none">
-          <span aria-hidden className="invisible col-start-1 row-start-1">
-            {label}
-          </span>
-          <span aria-hidden className="col-start-1 row-start-1 w-0 min-w-full overflow-hidden whitespace-nowrap">
-            {display}
-          </span>
-        </span>
-      </a>
+      <div style={stagger(open, step)} className={rise(open)}>
+        {/* Hovering the link scrambles its word (Scramble on Hover). It stays still otherwise. */}
+        <ScrambleOnHover
+          render={
+            <a
+              href="#"
+              aria-current={current ? "page" : undefined}
+              onClick={(event) => {
+                event.preventDefault();
+                onChoose();
+              }}
+              className={cx(
+                "group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase transition-colors duration-300 hover:text-accent aria-[current=page]:text-accent motion-reduce:transition-none",
+                focusRing,
+              )}
+            />
+          }
+          // A short green line that grows in front of the current or hovered link.
+          before={
+            <span
+              aria-hidden
+              className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-300 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
+            />
+          }
+        >
+          {label}
+        </ScrambleOnHover>
+      </div>
     </li>
   );
 }
@@ -206,37 +164,36 @@ export default function Navigation1() {
               />
             </a>
 
-            {/* MENU while closed; a plain cross, with no fill or border, while open. */}
-            <button
+            {/* MENU while closed (a small light Button); a plain cross while open (a ghost Button). */}
+            <Button
               ref={toggle}
-              type="button"
+              variant={open ? "ghost" : "inverse"}
+              size={open ? "icon-sm" : "sm"}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="navigation-1-panel"
               onClick={() => setOpen((value) => !value)}
-              className={cx(
-                "relative h-7 cursor-pointer rounded-md text-sm font-semibold uppercase transition-[width,background-color,color] duration-300 ease-out motion-reduce:transition-none",
-                focusRing,
-                open ? "w-7 bg-transparent text-text" : "w-18 bg-text text-bg hover:bg-text/85",
-              )}
+              className={cx("uppercase", !open && "w-18")}
             >
-              <span
-                className={cx(
-                  "absolute inset-0 flex items-center justify-center transition-opacity duration-200 motion-reduce:transition-none",
-                  open ? "opacity-0" : "opacity-100 delay-100",
-                )}
-              >
-                Menu
+              <span className="grid place-items-center">
+                <span
+                  className={cx(
+                    "col-start-1 row-start-1 transition-opacity duration-200 motion-reduce:transition-none",
+                    open ? "opacity-0" : "opacity-100 delay-100",
+                  )}
+                >
+                  Menu
+                </span>
+                <X
+                  aria-hidden
+                  className={cx(
+                    "col-start-1 row-start-1 size-6 transition-[opacity,rotate] duration-500 motion-reduce:transition-none",
+                    EASE,
+                    open ? "rotate-0 opacity-100 delay-100" : "-rotate-90 opacity-0",
+                  )}
+                />
               </span>
-              <X
-                aria-hidden
-                className={cx(
-                  "absolute inset-0 m-auto size-6 transition-[opacity,rotate] duration-500 motion-reduce:transition-none",
-                  EASE,
-                  open ? "rotate-0 opacity-100 delay-100" : "-rotate-90 opacity-0",
-                )}
-              />
-            </button>
+            </Button>
           </div>
 
           <div

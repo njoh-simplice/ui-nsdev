@@ -17,6 +17,35 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-13-button-sizes">Button: small size and ghost variant</h2>
+      <p>
+        <time dateTime="2026-10-13">2026-10-13</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Small Button:</strong> <code>size=&quot;sm&quot;</code> is 28px tall with 14px text,
+          and <code>size=&quot;icon-sm&quot;</code> is a 28px square for an icon. See{" "}
+          <Link href="/components/button">Button</Link>.
+        </li>
+        <li>
+          <strong>Ghost Button:</strong> <code>variant=&quot;ghost&quot;</code> has no fill and no
+          outline until you point at it.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Button widths animate:</strong> a button that changes between two set widths, such
+          as a label becoming an icon, now grows or shrinks smoothly. The regular buttons look the
+          same as before.
+        </li>
+        <li>
+          <strong>Navigation 1:</strong> its links use Scramble on Hover and its menu button is a
+          Button.
+        </li>
+      </ul>
+
       <h2 id="2026-10-13-text">Text effects</h2>
       <p>
         <time dateTime="2026-10-13">2026-10-13</time>
