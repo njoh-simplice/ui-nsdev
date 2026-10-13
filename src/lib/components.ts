@@ -5,7 +5,7 @@ const byTitle = (a: string, b: string) => a.localeCompare(b, "en", { sensitivity
 
 // Groups appear in this order; any group not listed follows, A to Z. Components inside a group
 // are always A to Z.
-const GROUP_ORDER = ["Foundations", "Form controls", "Disclosure & Overlays", "Menus & Feedback"];
+const GROUP_ORDER = ["Foundations", "Form controls", "Disclosure & Overlays", "Menus & Feedback", "Text"];
 const byGroup = (a: string, b: string) => {
   const rank = (title: string) => {
     const index = GROUP_ORDER.indexOf(title);
