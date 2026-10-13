@@ -14,12 +14,20 @@ const contact = [
   { label: "+1 (555) 000-0000", href: "tel:+15550000000" },
 ];
 
-const social = ["LinkedIn", "GitHub", "X", "Instagram"];
+const social = ["LinkedIn", "GitHub", "X"];
 
-// Every piece that appears when the card opens fades in a little after the one before it.
-const appear = (open: boolean, step: number) => ({ transitionDelay: open ? `${150 + step * 60}ms` : "0ms" });
-const appearStyles =
-  "transition-[opacity,translate] duration-300 ease-out motion-reduce:transition-none";
+// How the card and its contents move. The card opens with a long ease-out, and each piece of
+// content slides up out of its own line (a clipped row) a little after the one before it.
+const EASE = "ease-[cubic-bezier(0.22,1,0.36,1)]";
+// A gentler curve for the content, so its slide reads as smooth rather than sudden.
+const GLIDE = "ease-[cubic-bezier(0.33,1,0.68,1)]";
+const stagger = (open: boolean, step: number) => ({ transitionDelay: open ? `${180 + step * 90}ms` : "0ms" });
+const rise = (open: boolean) =>
+  cx(
+    "transition-[translate,opacity] motion-reduce:transition-none",
+    GLIDE,
+    open ? "translate-y-0 opacity-100 duration-[900ms]" : "translate-y-full opacity-0 duration-200",
+  );
 
 export default function Navigation1() {
   const [open, setOpen] = useState(false);
@@ -49,6 +57,8 @@ export default function Navigation1() {
       />
 
       <div className="absolute inset-x-0 top-6 flex justify-center px-4">
+        {/* Black glass: a dark, see-through fill (70%) that blurs the picture behind it, a faint light
+            edge and a highlight along the top. */}
         <div
           ref={root}
           onKeyDown={(event) => {
@@ -58,7 +68,9 @@ export default function Navigation1() {
             }
           }}
           className={cx(
-            "w-full overflow-hidden rounded-lg bg-surface text-text transition-[max-width] duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
+            "w-full overflow-hidden rounded-lg border border-text/10 bg-bg/70 text-text shadow-2xl inset-shadow-xs shadow-black/40 inset-shadow-text/10 backdrop-blur-2xl backdrop-saturate-150",
+            "transition-[max-width] duration-[600ms] motion-reduce:transition-none",
+            EASE,
             open ? "max-w-[34rem]" : "max-w-md",
           )}
         >
@@ -101,7 +113,8 @@ export default function Navigation1() {
               <X
                 aria-hidden
                 className={cx(
-                  "absolute inset-0 m-auto size-6 transition-[opacity,rotate] duration-300 motion-reduce:transition-none",
+                  "absolute inset-0 m-auto size-6 transition-[opacity,rotate] duration-500 motion-reduce:transition-none",
+                  EASE,
                   open ? "rotate-0 opacity-100 delay-100" : "-rotate-90 opacity-0",
                 )}
               />
@@ -112,7 +125,8 @@ export default function Navigation1() {
             id="navigation-1-panel"
             inert={!open}
             className={cx(
-              "grid transition-[grid-template-rows] duration-[450ms] ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
+              "grid transition-[grid-template-rows] duration-[600ms] motion-reduce:transition-none",
+              EASE,
               open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
             )}
           >
@@ -120,27 +134,30 @@ export default function Navigation1() {
               <nav aria-label="Main" className="px-3 pt-2 pb-6">
                 <ul>
                   {links.map((label, index) => (
-                    <li
-                      key={label}
-                      style={appear(open, index)}
-                      className={cx(appearStyles, open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0")}
-                    >
+                    // The row clips its link, so the link slides up from underneath it. The
+                    // padding and negative margin keep the focus ring from being cut off.
+                    <li key={label} className="-m-1 overflow-hidden p-1">
                       <a
                         href="#"
                         aria-current={label === current ? "page" : undefined}
+                        style={stagger(open, index)}
                         onClick={(event) => {
                           event.preventDefault();
                           setCurrent(label);
                           setOpen(false);
                         }}
-                        className={cx("group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase", focusRing)}
+                        className={cx(
+                          "group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase",
+                          focusRing,
+                          rise(open),
+                        )}
                       >
                         {/* A short green line that grows in front of the current or hovered link. */}
                         <span
                           aria-hidden
-                          className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-200 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
+                          className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-300 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
                         />
-                        <span className="transition-colors duration-200 group-hover:text-accent group-aria-[current=page]:text-accent motion-reduce:transition-none">
+                        <span className="transition-colors duration-300 group-hover:text-accent group-aria-[current=page]:text-accent motion-reduce:transition-none">
                           {label}
                         </span>
                       </a>
@@ -153,31 +170,29 @@ export default function Navigation1() {
                 <Separator />
               </div>
 
-              <div
-                style={appear(open, links.length)}
-                className={cx(
-                  "grid grid-cols-2 gap-6 px-3 pt-6 pb-4 text-sm",
-                  appearStyles,
-                  open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-                )}
-              >
-                <div className="flex flex-col gap-1.5">
-                  <p className="text-text-secondary">Contact</p>
-                  {contact.map(({ label, href }) => (
-                    <a key={label} href={href} className={cx("w-fit rounded-sm hover:text-accent", focusRing)}>
-                      {label}
-                    </a>
-                  ))}
-                  <p className="text-text/70">123 Main Street, Your City</p>
+              <div className="grid grid-cols-2 gap-6 px-3 pt-6 pb-4 text-sm">
+                <div className="-m-1 overflow-hidden p-1">
+                  <div style={stagger(open, links.length)} className={cx("flex flex-col gap-1.5", rise(open))}>
+                    <p className="text-text/70">Contact</p>
+                    {contact.map(({ label, href }) => (
+                      <a key={label} href={href} className={cx("w-fit rounded-sm hover:text-accent", focusRing)}>
+                        {label}
+                      </a>
+                    ))}
+                    <p className="text-text/70">123 Main Street, Your City</p>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <p className="text-text-secondary">Follow us</p>
-                  {social.map((label) => (
-                    <a key={label} href="#" className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing)}>
-                      {label}
-                      <ArrowUpRight aria-hidden className="size-3.5" />
-                    </a>
-                  ))}
+                {/* Follow us sits against the right edge, with the same three rows as Contact. */}
+                <div className="-m-1 overflow-hidden p-1">
+                  <div style={stagger(open, links.length + 1)} className={cx("flex flex-col items-end gap-1.5", rise(open))}>
+                    <p className="text-text/70">Follow us</p>
+                    {social.map((label) => (
+                      <a key={label} href="#" className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing)}>
+                        {label}
+                        <ArrowUpRight aria-hidden className="size-3.5" />
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
