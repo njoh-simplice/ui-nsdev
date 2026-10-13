@@ -34,6 +34,17 @@ const rise = (open: boolean) =>
     open ? "translate-y-0 opacity-100 duration-900" : "translate-y-full opacity-0 duration-200",
   );
 
+// The contact and social lines enter more softly than the links: the headings only fade, then
+// each line fades in with a small rise, one after another. Both columns step together, so row
+// by row they appear side by side.
+const settle = (open: boolean, step: number) => ({ transitionDelay: open ? `${540 + step * 110}ms` : "0ms" });
+const soft = (open: boolean, move = true) =>
+  cx(
+    "transition-[opacity,translate] motion-reduce:transition-none",
+    GLIDE,
+    open ? "translate-y-0 opacity-100 duration-700" : cx("opacity-0 duration-200", move ? "translate-y-2" : "translate-y-0"),
+  );
+
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+?";
 
 // On hover the letters of a word flicker through random characters, settling on the real ones
@@ -270,35 +281,43 @@ export default function Navigation1() {
               </div>
 
               <div className="grid grid-cols-2 gap-6 px-3 pt-6 pb-4 text-sm">
-                <div className="-m-1 overflow-hidden p-1">
-                  <div style={stagger(open, links.length)} className={cx("flex flex-col gap-1.5", rise(open))}>
-                    <p className="text-text/70">Contact</p>
-                    {contact.map(({ label, href }) => (
-                      <a key={label} href={href} className={cx("w-fit rounded-sm hover:text-accent", focusRing)}>
-                        {label}
-                      </a>
-                    ))}
-                    <p className="text-text/70">{address}</p>
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  <p style={settle(open, 0)} className={cx("text-text/70", soft(open, false))}>
+                    Contact
+                  </p>
+                  {contact.map(({ label, href }, index) => (
+                    <a
+                      key={label}
+                      href={href}
+                      style={settle(open, index + 1)}
+                      className={cx("w-fit rounded-sm hover:text-accent", focusRing, soft(open))}
+                    >
+                      {label}
+                    </a>
+                  ))}
+                  <p style={settle(open, contact.length + 1)} className={cx("text-text/70", soft(open))}>
+                    {address}
+                  </p>
                 </div>
                 {/* Follow us sits against the right edge, with the same three rows as Contact. */}
-                <div className="-m-1 overflow-hidden p-1">
-                  <div style={stagger(open, links.length + 1)} className={cx("flex flex-col items-end gap-1.5", rise(open))}>
-                    <p className="text-text/70">Follow us</p>
-                    {social.map(({ label, href }) => (
-                      <a
-                        key={label}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing)}
-                      >
-                        {label}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                        <ArrowUpRight aria-hidden className="size-3.5" />
-                      </a>
-                    ))}
-                  </div>
+                <div className="flex flex-col items-end gap-1.5">
+                  <p style={settle(open, 0)} className={cx("text-text/70", soft(open, false))}>
+                    Follow us
+                  </p>
+                  {social.map(({ label, href }, index) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={settle(open, index + 1)}
+                      className={cx("flex w-fit items-center gap-1 rounded-sm hover:text-accent", focusRing, soft(open))}
+                    >
+                      {label}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                      <ArrowUpRight aria-hidden className="size-3.5" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
