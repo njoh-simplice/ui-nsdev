@@ -10,24 +10,30 @@ export default function Page() {
   return (
     <ComponentPage
       title={meta.title}
-      lead="A button triggers an action. It comes in three intents (default, secondary and destructive), can carry an icon, and has a square icon-only form. Every one of them has hover, focus, pressed and disabled states."
+      lead="A button triggers an action. It comes in four intents (default, secondary, destructive and ghost), in a regular and a small size, can carry an icon, and has square icon-only forms. Every one of them has hover, focus, pressed and disabled states."
       demo={<ButtonDemo />}
       demoPath="content/components/button/demo.tsx"
       sourcePath="src/components/ui/button.tsx"
       props={[
         {
           name: "variant",
-          type: "default | secondary | destructive | inverse",
-          default: "default",
-          description: "The intent of the button, and its color.",
-        },
-        {
-          name: "size",
-          type: "default | icon",
+          type: "default | secondary | destructive | ghost | inverse",
           default: "default",
           description: (
             <>
-              <code>icon</code> makes a square button for an icon with no label.
+              The intent of the button, and its color. <code>ghost</code> has no fill and no outline
+              until you point at it.
+            </>
+          ),
+        },
+        {
+          name: "size",
+          type: "default | sm | icon | icon-sm",
+          default: "default",
+          description: (
+            <>
+              <code>sm</code> is a smaller button, for tight places. <code>icon</code> and{" "}
+              <code>icon-sm</code> make square buttons for an icon with no label.
             </>
           ),
         },
@@ -99,8 +105,9 @@ export default function Page() {
             label: "Size:",
             text: (
               <>
-                36px tall with 16px of side padding. The icon-only button is a 36px square. Corners
-                use the <code>md</code> radius, 6px.
+                36px tall with 16px of side padding. <code>sm</code> is 28px tall with 12px of side
+                padding and 14px text. The icon-only buttons are squares of 36px and 28px. Corners use
+                the <code>md</code> radius, 6px.
               </>
             ),
           },
@@ -114,7 +121,7 @@ export default function Page() {
               <>
                 <code>default</code> fills with the accent, <code>destructive</code> with the danger
                 color, and <code>inverse</code> with the main text color. <code>secondary</code> has
-                no fill and a 1px outline. See <Link href="/docs/theming">Theming</Link> for the
+                no fill and a 1px outline, and <code>ghost</code> has neither until it is hovered. See <Link href="/docs/theming">Theming</Link> for the
                 tokens.
               </>
             ),
@@ -141,14 +148,17 @@ export default function Page() {
       }}
       interaction={{
         notes: [
-          { label: "Hover:", text: "the fill eases to 85%." },
+          {
+            label: "Hover:",
+            text: "the fill eases to 85%. A ghost button gets a faint 10% wash, since it has no fill to ease.",
+          },
           {
             label: "Focus:",
             text: "keyboard focus draws a 2px outline in the main text color, 2px away from the button. A mouse click doesn't show it.",
           },
           {
             label: "Pressed:",
-            text: "the button shrinks slightly, to 97%, and the fill drops to 70%. Both animate over 150ms. People who ask their system for reduced motion get the color change without the shrink.",
+            text: "the button shrinks slightly, to 97%, and the fill drops to 70% (a ghost button's wash deepens to 20%). Both animate over 150ms. People who ask their system for reduced motion get the color change without the shrink.",
           },
           {
             label: "Disabled:",
@@ -182,7 +192,7 @@ export default function Page() {
           },
           {
             label: "Target size:",
-            text: "36px clears the 24px minimum of WCAG 2.2 AA. It is smaller than the 44px often advised for touch, so give it room around it on phones.",
+            text: "36px clears the 24px minimum of WCAG 2.2 AA, and so does the 28px small size, but both are smaller than the 44px often advised for touch. Give them room around them on phones, and keep the small size for dense places like a toolbar.",
           },
         ],
       }}
