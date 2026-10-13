@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Host_Grotesk } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteChrome } from "@/components/site-chrome";
 import { SiteHeader } from "@/components/site-header";
 import { ToastProvider } from "@/components/ui/toast";
 import "./globals.css";
@@ -39,9 +40,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ToastProvider>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
+          <SiteChrome header={<SiteHeader />} footer={<SiteFooter />}>
+            {children}
+          </SiteChrome>
         </ToastProvider>
       </body>
     </html>

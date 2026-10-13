@@ -4,14 +4,17 @@ import { SideMenu, type MenuGroup } from "@/components/side-menu";
 import { cx } from "@/lib/cx";
 
 // Left menu | content | On this page. The content is centered; with the right column the two
-// side columns are the same width, so it is centered on the page. Pass toc={false} for sections without the right column.
+// side columns are the same width, so it is centered on the page. Pass toc={false} for sections
+// without the right column, and wide for content that should fill the space (a block preview).
 export function SectionLayout({
   menu,
   toc = true,
+  wide = false,
   children,
 }: {
   menu: MenuGroup[];
   toc?: boolean;
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
@@ -30,7 +33,7 @@ export function SectionLayout({
         </div>
       </aside>
 
-      <main id="content" className="mx-auto w-full max-w-3xl min-w-0">
+      <main id="content" className={cx("mx-auto w-full min-w-0", !wide && "max-w-3xl")}>
         {children}
       </main>
 

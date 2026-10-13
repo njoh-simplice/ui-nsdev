@@ -34,7 +34,9 @@ The header button is a GitHub link labelled "Give us a star" — no star count.
 ## Content model
 
 Content lives in `content/{components,blocks,pages,dashboard}`. Each item is a
-`meta.ts` + `demo.tsx` pair.
+`meta.ts` + `demo.tsx` pair. A block's page shows its demo in a viewer (Preview or Code, Desktop,
+Tablet or Mobile) whose preview is a frame of the `/preview/<slug>` route. The Blocks menu has
+sections (`content/blocks/groups.ts`) that list their blocks.
 
 Import content with the `@content/*` alias (it maps to `content/*`).
 
@@ -52,12 +54,13 @@ block (`bg-bg`, `text-accent`, `border-border`, `rounded-md`, `font-mono`, …).
 ## Build order
 
 1. Skeleton — **done**.
-2. **Components: Foundations — Button, Input, Field, Separator — CURRENT PHASE.** Button
-   ships first, with a full detail page (live demo, source panel, notes, accessibility
-   section), since it has to prove the demo → source → page pipeline before it's repeated
+2. Components: Foundations — Button, Input, Field, Separator, and the groups added since (33
+   so far). Button shipped first, with a full detail page (live demo, source panel, notes,
+   accessibility section), to prove the demo → source → page pipeline before it was repeated
    across Base UI's ~38 components.
 3. Components index page.
-4. Blocks, starting with Hero.
+4. **Blocks — CURRENT PHASE.** The menu sections (Marketing, Form, Authentication), the index
+   and the viewer are in. The blocks themselves are built one at a time with the owner.
 5. Pages — compose one landing page from existing Blocks.
 6. Dashboard — highest complexity, last.
 7. Polish — dark/light mode, motion vocabulary, consistent focus rings.
