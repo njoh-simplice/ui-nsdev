@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
-import { Separator } from "@/components/ui/separator";
 import { cx } from "@/lib/cx";
 import { focusRing } from "@/lib/styles";
 
@@ -26,8 +25,101 @@ const rise = (open: boolean) =>
   cx(
     "transition-[translate,opacity] motion-reduce:transition-none",
     GLIDE,
-    open ? "translate-y-0 opacity-100 duration-[900ms]" : "translate-y-full opacity-0 duration-200",
+    open ? "translate-y-0 opacity-100 duration-900" : "translate-y-full opacity-0 duration-200",
   );
+
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+?";
+
+// On hover the letters of a word flicker through random characters, settling on the real ones
+// from left to right. The real word is always what a screen reader gets (see NavLink), and
+// nothing happens for people who ask their system for reduced motion.
+function useScramble(text: string) {
+  const [display, setDisplay] = useState(text);
+  const timer = useRef<number | undefined>(undefined);
+
+  const stop = useCallback(() => {
+    window.clearInterval(timer.current);
+    setDisplay(text);
+  }, [text]);
+
+  const start = useCallback(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    window.clearInterval(timer.current);
+    const began = performance.now();
+    timer.current = window.setInterval(() => {
+      const elapsed = performance.now() - began;
+      let settled = true;
+      const next = [...text]
+        .map((char, index) => {
+          if (elapsed >= 150 + index * 80) return char;
+          settled = false;
+          return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+        })
+        .join("");
+      setDisplay(next);
+      if (settled) window.clearInterval(timer.current);
+    }, 40);
+  }, [text]);
+
+  useEffect(() => () => window.clearInterval(timer.current), []);
+
+  return { display, start, stop };
+}
+
+function NavLink({
+  label,
+  current,
+  open,
+  step,
+  onChoose,
+}: {
+  label: string;
+  current: boolean;
+  open: boolean;
+  step: number;
+  onChoose: () => void;
+}) {
+  const { display, start, stop } = useScramble(label);
+
+  return (
+    // The row clips its link, so the link slides up from underneath it. The padding and
+    // negative margin keep the focus ring from being cut off.
+    <li className="-m-1 overflow-hidden p-1">
+      <a
+        href="#"
+        aria-label={label}
+        aria-current={current ? "page" : undefined}
+        style={stagger(open, step)}
+        onPointerEnter={(event) => event.pointerType === "mouse" && start()}
+        onPointerLeave={stop}
+        onClick={(event) => {
+          event.preventDefault();
+          onChoose();
+        }}
+        className={cx(
+          "group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase",
+          focusRing,
+          rise(open),
+        )}
+      >
+        {/* A short green line that grows in front of the current or hovered link. */}
+        <span
+          aria-hidden
+          className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-300 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
+        />
+        {/* The real word holds the width, so the scrambled letters never move the layout. */}
+        <span className="grid transition-colors duration-300 group-hover:text-accent group-aria-[current=page]:text-accent motion-reduce:transition-none">
+          <span aria-hidden className="invisible col-start-1 row-start-1">
+            {label}
+          </span>
+          <span aria-hidden className="col-start-1 row-start-1 w-0 min-w-full overflow-hidden whitespace-nowrap">
+            {display}
+          </span>
+        </span>
+      </a>
+    </li>
+  );
+}
 
 export default function Navigation1() {
   const [open, setOpen] = useState(false);
@@ -55,10 +147,19 @@ export default function Navigation1() {
         sizes="100vw"
         className="-z-10 object-cover"
       />
+      {/* The picture darkens a little while the menu is open. */}
+      <div
+        aria-hidden
+        className={cx(
+          "pointer-events-none absolute inset-0 -z-10 bg-bg transition-opacity duration-600 motion-reduce:transition-none",
+          EASE,
+          open ? "opacity-35" : "opacity-0",
+        )}
+      />
 
       <div className="absolute inset-x-0 top-6 flex justify-center px-4">
-        {/* Black glass: a dark, see-through fill (70%) that blurs the picture behind it, a faint light
-            edge and a highlight along the top. */}
+        {/* Black glass: a dark, see-through fill (70%) that blurs the picture behind it, a faint
+            light edge and a highlight along the top. */}
         <div
           ref={root}
           onKeyDown={(event) => {
@@ -69,9 +170,9 @@ export default function Navigation1() {
           }}
           className={cx(
             "w-full overflow-hidden rounded-lg border border-text/10 bg-bg/70 text-text shadow-2xl inset-shadow-xs shadow-black/40 inset-shadow-text/10 backdrop-blur-2xl backdrop-saturate-150",
-            "transition-[max-width] duration-[600ms] motion-reduce:transition-none",
+            "transition-[max-width] duration-600 motion-reduce:transition-none",
             EASE,
-            open ? "max-w-[34rem]" : "max-w-md",
+            open ? "max-w-136" : "max-w-md",
           )}
         >
           <div className="flex items-center justify-between p-3">
@@ -99,7 +200,7 @@ export default function Navigation1() {
               className={cx(
                 "relative h-7 cursor-pointer rounded-md text-sm font-semibold uppercase transition-[width,background-color,color] duration-300 ease-out motion-reduce:transition-none",
                 focusRing,
-                open ? "w-7 bg-transparent text-text" : "w-[4.5rem] bg-text text-bg hover:bg-text/85",
+                open ? "w-7 bg-transparent text-text" : "w-18 bg-text text-bg hover:bg-text/85",
               )}
             >
               <span
@@ -125,7 +226,7 @@ export default function Navigation1() {
             id="navigation-1-panel"
             inert={!open}
             className={cx(
-              "grid transition-[grid-template-rows] duration-[600ms] motion-reduce:transition-none",
+              "grid transition-[grid-template-rows] duration-600 motion-reduce:transition-none",
               EASE,
               open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
             )}
@@ -134,40 +235,32 @@ export default function Navigation1() {
               <nav aria-label="Main" className="px-3 pt-2 pb-6">
                 <ul>
                   {links.map((label, index) => (
-                    // The row clips its link, so the link slides up from underneath it. The
-                    // padding and negative margin keep the focus ring from being cut off.
-                    <li key={label} className="-m-1 overflow-hidden p-1">
-                      <a
-                        href="#"
-                        aria-current={label === current ? "page" : undefined}
-                        style={stagger(open, index)}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          setCurrent(label);
-                          setOpen(false);
-                        }}
-                        className={cx(
-                          "group flex items-center rounded-sm text-[2.5rem] leading-[1.33] font-medium uppercase",
-                          focusRing,
-                          rise(open),
-                        )}
-                      >
-                        {/* A short green line that grows in front of the current or hovered link. */}
-                        <span
-                          aria-hidden
-                          className="h-0.5 w-0 shrink-0 bg-accent transition-[width,margin] duration-300 group-hover:mr-3 group-hover:w-6 group-aria-[current=page]:mr-3 group-aria-[current=page]:w-6 motion-reduce:transition-none"
-                        />
-                        <span className="transition-colors duration-300 group-hover:text-accent group-aria-[current=page]:text-accent motion-reduce:transition-none">
-                          {label}
-                        </span>
-                      </a>
-                    </li>
+                    <NavLink
+                      key={label}
+                      label={label}
+                      current={label === current}
+                      open={open}
+                      step={index}
+                      onChoose={() => {
+                        setCurrent(label);
+                        setOpen(false);
+                      }}
+                    />
                   ))}
                 </ul>
               </nav>
 
+              {/* A faint hairline that draws itself from left to right. */}
               <div className="px-3">
-                <Separator />
+                <div
+                  aria-hidden
+                  style={stagger(open, links.length)}
+                  className={cx(
+                    "h-px origin-left bg-text/10 transition-[scale] motion-reduce:transition-none",
+                    GLIDE,
+                    open ? "scale-x-100 duration-1000" : "scale-x-0 duration-200",
+                  )}
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-6 px-3 pt-6 pb-4 text-sm">
