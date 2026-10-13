@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlockItem } from "@/components/block-item";
+import { BlockPrerequisites } from "@/components/block-prerequisites";
 import { SORTED_BLOCKS } from "@/lib/blocks";
 
-// One page per block in content/blocks: its title, then its viewer.
+// One page per block in content/blocks: its title, its viewer, then the components it needs.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -26,6 +27,7 @@ export default async function Page({ params }: PageProps<"/blocks/[slug]">) {
       <h1 className="text-4xl leading-[1.05] font-bold text-text sm:text-5xl">{block.meta.title}</h1>
       <div className="doc-prose mt-8">
         <BlockItem meta={block.meta} />
+        <BlockPrerequisites slug={block.meta.slug} />
       </div>
     </article>
   );
