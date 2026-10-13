@@ -17,6 +17,25 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-13-navigation-1">First block: Navigation 1</h2>
+      <p>
+        <time dateTime="2026-10-13">2026-10-13</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Navigation 1:</strong> an animated navigation menu. A small card with a logo and a
+          MENU button opens into a larger one with the links, and the button becomes a plain cross.
+          Contact details and social links sit under the links. See{" "}
+          <Link href="/blocks/navigation-1">Navigation 1</Link>.
+        </li>
+        <li>
+          <strong>Blocks:</strong> the section is open, with a menu of Marketing, Form and
+          Authentication, and a viewer that shows each block in a Desktop, Tablet or Mobile frame,
+          with its code a click away.
+        </li>
+      </ul>
+
       <h2 id="2026-10-12-toast-examples">Ten toast examples</h2>
       <p>
         <time dateTime="2026-10-12">2026-10-12</time>
