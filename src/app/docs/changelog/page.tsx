@@ -17,6 +17,29 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-13-text">Text effects</h2>
+      <p>
+        <time dateTime="2026-10-13">2026-10-13</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Scramble on Hover:</strong> text whose letters flicker through random characters
+          and settle when the mouse moves over it. See{" "}
+          <Link href="/components/scramble-on-hover">Scramble on Hover</Link>.
+        </li>
+        <li>
+          <strong>Scramble on Load:</strong> a heading or line of text that does the same as soon as it
+          is on the screen. See <Link href="/components/scramble-on-load">Scramble on Load</Link>.
+        </li>
+      </ul>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Components menu:</strong> a fifth group, Text, for effects on text.
+        </li>
+      </ul>
+
       <h2 id="2026-10-13-navigation-1">First block: Navigation 1</h2>
       <p>
         <time dateTime="2026-10-13">2026-10-13</time>
