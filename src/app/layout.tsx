@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteChrome } from "@/components/site-chrome";
 import { SiteHeader } from "@/components/site-header";
 import { ToastProvider } from "@/components/ui/toast";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const hostGrotesk = Host_Grotesk({
@@ -17,14 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ui.nsdev.me"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "nsdev/ui | Own every Pixel of your Design System",
     template: "%s - nsdev/ui",
   },
   description:
     "A component library built on Base UI and Tailwind. Every component ships fully styled — swap in your own tokens.",
-  manifest: "/manifest.json",
 };
 
 export const viewport: Viewport = {

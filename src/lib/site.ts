@@ -15,3 +15,7 @@ export function isActivePath(href: string, pathname: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
+
+export const SITE_URL = "https://ui.nsdev.me";
+export const SITE_NAME = "nsdev/ui";
+export const SITE_DESCRIPTION = "A component library built on Base UI and Tailwind.";
