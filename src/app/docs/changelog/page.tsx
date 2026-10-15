@@ -17,6 +17,26 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-15-navigation-1-image">Navigation 1: optional picture</h2>
+      <p>
+        <time dateTime="2026-10-15">2026-10-15</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>No picture:</strong> <code>&lt;Navigation1 image={"{false}"} /&gt;</code> puts the
+          card on the plain page background instead of the canyon picture. See{" "}
+          <Link href="/blocks/navigation-1">Navigation 1</Link>.
+        </li>
+      </ul>
+      <h3>Fixed</h3>
+      <ul>
+        <li>
+          <strong>Narrow cards:</strong> in a narrow space the phone number in the open card no longer
+          wraps onto two lines.
+        </li>
+      </ul>
+
       <h2 id="2026-10-13-button-sizes">Button: small size and ghost variant</h2>
       <p>
         <time dateTime="2026-10-13">2026-10-13</time>
