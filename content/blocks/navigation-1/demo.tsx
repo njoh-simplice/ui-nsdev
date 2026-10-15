@@ -96,7 +96,9 @@ function NavLink({
   );
 }
 
-export default function Navigation1() {
+// `image` is the canyon picture behind the card. Pass false to put the card on the plain page
+// background, such as when the block sits inside something that already has its own look.
+export default function Navigation1({ image = true }: { image?: boolean }) {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("Product");
   const root = useRef<HTMLDivElement>(null);
@@ -114,14 +116,16 @@ export default function Navigation1() {
 
   return (
     <section className="relative isolate min-h-screen overflow-hidden">
-      <Image
-        src="/assets/images/software-developer-canyon.webp"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="-z-10 object-cover"
-      />
+      {image && (
+        <Image
+          src="/assets/images/software-developer-canyon.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="-z-10 object-cover"
+        />
+      )}
       {/* The picture darkens a little while the menu is open. */}
       <div
         aria-hidden
@@ -237,7 +241,7 @@ export default function Navigation1() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-6 px-3 pt-6 pb-4 text-sm">
+              <div className="grid grid-cols-[1fr_auto] gap-6 px-3 pt-6 pb-4 text-sm">
                 <div className="flex flex-col gap-1.5">
                   <p style={settle(open, 0)} className={cx("text-text/70", soft(open, false))}>
                     Contact
