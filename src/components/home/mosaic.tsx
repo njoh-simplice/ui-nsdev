@@ -1,14 +1,7 @@
 import type { ReactNode } from "react";
-import {
-  AccordionTile,
-  ButtonsTile,
-  FormTile,
-  NavigationTile,
-  PricingTile,
-  StatusTile,
-  TabsTile,
-  TextTile,
-} from "@/components/home/tiles";
+import { ButtonsTile } from "@/components/home/buttons-tile";
+import { ChecklistTile } from "@/components/home/checklist-tile";
+import { AccordionTile, FormTile, NavigationTile, StatusTile, TabsTile, TextTile } from "@/components/home/tiles";
 import { cx } from "@/lib/cx";
 
 // The tiles of the home page, each a live component or block. Heights (lg) mirror the design
@@ -19,7 +12,7 @@ type Tile = { height: string; content: ReactNode; bare?: boolean; className?: st
 
 const columns: Tile[][] = [
   [
-    { height: "lg:h-[496px]", content: <NavigationTile />, bare: true, className: "h-[30rem] sm:col-span-2 lg:col-span-1" },
+    { height: "lg:h-[496px]", content: <NavigationTile />, bare: true, className: "h-128 sm:col-span-2 lg:col-span-1" },
     { height: "lg:h-[280px]", content: <AccordionTile /> },
   ],
   [
@@ -28,7 +21,7 @@ const columns: Tile[][] = [
     { height: "lg:h-[322px]", content: <FormTile /> },
   ],
   [
-    { height: "lg:h-[272px]", content: <PricingTile /> },
+    { height: "lg:h-[272px]", content: <ChecklistTile /> },
     { height: "lg:h-[272px]", content: <TextTile /> },
     { height: "lg:h-[219px]", content: <StatusTile /> },
   ],

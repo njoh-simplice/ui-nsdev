@@ -1,9 +1,7 @@
-import { ArrowRight, Check } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,21 +13,19 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { focusRing } from "@/lib/styles";
+import Navigation1 from "@content/blocks/navigation-1/demo";
 
 // The live tiles of the home page mosaic. Each is built from the library's own components, sized
 // to fit its tile at every width the mosaic has (the narrowest is about 250px of room).
 
-// The first tile is the Navigation 1 block, shown in a frame of its own preview page. A frame
-// (and not the component itself) gives it the tile's real size, so its picture is cropped to the
-// tile and the card behaves exactly as it does on its page.
+// The first tile is the Navigation 1 block itself, on the page background (no picture) so it
+// matches the rest of the site. Its section is stretched to the tile, where on its own page it
+// fills the screen.
 export function NavigationTile() {
   return (
-    <iframe
-      src="/preview/navigation-1"
-      title="Navigation 1 block: an animated navigation menu over a canyon, live"
-      loading="lazy"
-      className="size-full border-0 bg-bg"
-    />
+    <div className="size-full *:h-full *:min-h-0">
+      <Navigation1 image={false} />
+    </div>
   );
 }
 
@@ -49,25 +45,6 @@ export function AccordionTile() {
         <AccordionContent>Keyboards and screen readers work out of the box.</AccordionContent>
       </AccordionItem>
     </Accordion>
-  );
-}
-
-export function ButtonsTile() {
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
-      <Button>Save</Button>
-      <Button variant="secondary">Cancel</Button>
-      <Button variant="destructive">Delete</Button>
-      <Button variant="ghost">More</Button>
-      <Button size="sm">Small</Button>
-      <Button size="icon" aria-label="Go to the next step">
-        <ArrowRight />
-      </Button>
-      <Button size="icon-sm" variant="secondary" aria-label="Go to the next step, small">
-        <ArrowRight />
-      </Button>
-      <Button disabled>Disabled</Button>
-    </div>
   );
 }
 
@@ -120,40 +97,6 @@ export function FormTile() {
       </Label>
       <Slider defaultValue={40} label="Volume" />
     </div>
-  );
-}
-
-export function PricingTile() {
-  return (
-    <>
-      {/* A soft green glow and a bright hairline along the top mark the popular plan. */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-accent/10 to-transparent" />
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent to-transparent" />
-      <div className="relative flex w-full flex-col gap-3">
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-xl leading-tight font-semibold">Pro</p>
-          <Badge variant="success">Popular</Badge>
-        </div>
-        <p className="flex items-baseline gap-1.5">
-          <span className="text-4xl leading-none font-bold tracking-tight">$24</span>
-          <span className="text-base text-text/70">/ month</span>
-        </p>
-        <ul className="flex flex-col gap-1.5 text-sm text-text/80">
-          {["Unlimited projects", "Priority support"].map((feature) => (
-            <li key={feature} className="flex items-center gap-2.5">
-              <Check aria-hidden className="size-4 shrink-0 text-accent" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <div className="flex gap-2">
-          <Button className="flex-1">Get started</Button>
-          <Button variant="secondary" className="flex-1">
-            Learn more
-          </Button>
-        </div>
-      </div>
-    </>
   );
 }
 
