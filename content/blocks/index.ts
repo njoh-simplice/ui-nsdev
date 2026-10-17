@@ -4,6 +4,11 @@
 // the blocks of each section A to Z.
 import Navigation1 from "./navigation-1/demo";
 import { meta as navigation1 } from "./navigation-1/meta";
+import Navigation2 from "./navigation-2/demo";
+import { meta as navigation2 } from "./navigation-2/meta";
 import type { BlockEntry } from "./types";
 
-export const blocks: BlockEntry[] = [{ meta: navigation1, Component: Navigation1 }];
+export const blocks: BlockEntry[] = [
+  { meta: navigation1, Component: Navigation1 },
+  { meta: navigation2, Component: Navigation2 },
+];
