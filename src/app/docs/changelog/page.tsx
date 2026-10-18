@@ -17,6 +17,20 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-17-navigation-2">Block: Navigation 2</h2>
+      <p>
+        <time dateTime="2026-10-17">2026-10-17</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Navigation 2:</strong> a fixed underlay navigation. The menu sits underneath the
+          page, and a Menu button slides the page aside to show it, with the same entrance as
+          Navigation 1 for the links, the hairline and the contact details. See{" "}
+          <Link href="/blocks/navigation-2">Navigation 2</Link>.
+        </li>
+      </ul>
+
       <h2 id="2026-10-15-navigation-1-image">Navigation 1: optional picture</h2>
       <p>
         <time dateTime="2026-10-15">2026-10-15</time>
