@@ -17,6 +17,20 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-27-glass-dock">New block: Glass Dock</h2>
+      <p>
+        <time dateTime="2026-10-27">2026-10-27</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Glass Dock:</strong> a dock-style navigation in black glass. Icons swell
+          towards the pointer on a spring and rise out of the bar, and each shows its name above it
+          while pointed at or focused. Touch screens and reduced motion get a still dock. See{" "}
+          <Link href="/blocks/glass-dock">Glass Dock</Link>.
+        </li>
+      </ul>
+
       <h2 id="2026-10-27-block-names">Blocks renamed</h2>
       <p>
         <time dateTime="2026-10-27">2026-10-27</time>
