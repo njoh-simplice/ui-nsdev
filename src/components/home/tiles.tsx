@@ -13,18 +13,18 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { focusRing } from "@/lib/styles";
-import Navigation1 from "@content/blocks/navigation-1/demo";
+import CardMenu from "@content/blocks/card-menu/demo";
 
 // The live tiles of the home page mosaic. Each is built from the library's own components, sized
 // to fit its tile at every width the mosaic has (the narrowest is about 250px of room).
 
-// The first tile is the Navigation 1 block itself, on the page background (no picture) so it
+// The first tile is the Card Menu block itself, on the page background (no picture) so it
 // matches the rest of the site. Its section is stretched to the tile, where on its own page it
 // fills the screen.
 export function NavigationTile() {
   return (
     <div className="size-full *:h-full *:min-h-0">
-      <Navigation1 image={false} />
+      <CardMenu image={false} />
     </div>
   );
 }

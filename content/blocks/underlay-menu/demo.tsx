@@ -24,7 +24,7 @@ const social = [
 ];
 
 // How things move. The page slides aside with a long ease-out, and each piece of the menu slides
-// up out of its own line (a clipped row) a little after the one before it, as in Navigation 1.
+// up out of its own line (a clipped row) a little after the one before it, as in Card Menu.
 const EASE = "ease-[cubic-bezier(0.22,1,0.36,1)]";
 // A gentler curve for the content, so its slide reads as smooth rather than sudden.
 const GLIDE = "ease-[cubic-bezier(0.33,1,0.68,1)]";
@@ -98,7 +98,7 @@ function NavLink({
 
 // `--panel` is how much of the width the menu takes: 26rem, or the whole width less a sliver of
 // the page on a narrow screen. The page slides left by exactly that much.
-export default function Navigation2() {
+export default function UnderlayMenu() {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("Home");
   const toggle = useRef<HTMLButtonElement>(null);
@@ -120,7 +120,7 @@ export default function Navigation2() {
       {/* The menu sits underneath the page, fixed to the right edge, and is shown by moving the
           page out of the way. It cannot be reached while it is covered. */}
       <div
-        id="navigation-2-panel"
+        id="underlay-menu-panel"
         inert={!open}
         className="absolute inset-y-0 right-0 flex w-(--panel) flex-col overflow-y-auto px-6 pt-20 pb-6"
       >
@@ -258,7 +258,7 @@ export default function Navigation2() {
         variant={open ? "ghost" : "inverse"}
         size="sm"
         aria-expanded={open}
-        aria-controls="navigation-2-panel"
+        aria-controls="underlay-menu-panel"
         onClick={() => setOpen((value) => !value)}
         className="absolute top-4 right-4 z-10 uppercase"
       >

@@ -17,30 +17,45 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
-      <h2 id="2026-10-17-navigation-2">Block: Navigation 2</h2>
+      <h2 id="2026-10-27-block-names">Blocks renamed</h2>
+      <p>
+        <time dateTime="2026-10-27">2026-10-27</time>
+      </p>
+      <h3>Changed</h3>
+      <ul>
+        <li>
+          <strong>Names that say what they are:</strong> Navigation 1 is now{" "}
+          <Link href="/blocks/card-menu">Card Menu</Link> and Navigation 2 is{" "}
+          <Link href="/blocks/underlay-menu">Underlay Menu</Link>. The old addresses
+          (<code>/blocks/navigation-1</code> and <code>/blocks/navigation-2</code>) redirect to the
+          new ones.
+        </li>
+      </ul>
+
+      <h2 id="2026-10-17-navigation-2">Block: Underlay Menu</h2>
       <p>
         <time dateTime="2026-10-17">2026-10-17</time>
       </p>
       <h3>Added</h3>
       <ul>
         <li>
-          <strong>Navigation 2:</strong> a fixed underlay navigation. The menu sits underneath the
+          <strong>Underlay Menu:</strong> a fixed underlay navigation. The menu sits underneath the
           page, and a Menu button slides the page aside to show it, with the same entrance as
-          Navigation 1 for the links, the hairline and the contact details. See{" "}
-          <Link href="/blocks/navigation-2">Navigation 2</Link>.
+          Card Menu for the links, the hairline and the contact details. See{" "}
+          <Link href="/blocks/underlay-menu">Underlay Menu</Link>.
         </li>
       </ul>
 
-      <h2 id="2026-10-15-navigation-1-image">Navigation 1: optional picture</h2>
+      <h2 id="2026-10-15-navigation-1-image">Card Menu: optional picture</h2>
       <p>
         <time dateTime="2026-10-15">2026-10-15</time>
       </p>
       <h3>Added</h3>
       <ul>
         <li>
-          <strong>No picture:</strong> <code>&lt;Navigation1 image={"{false}"} /&gt;</code> puts the
+          <strong>No picture:</strong> <code>&lt;CardMenu image={"{false}"} /&gt;</code> puts the
           card on the plain page background instead of the canyon picture. See{" "}
-          <Link href="/blocks/navigation-1">Navigation 1</Link>.
+          <Link href="/blocks/card-menu">Card Menu</Link>.
         </li>
       </ul>
       <h3>Fixed</h3>
@@ -75,7 +90,7 @@ export default function Page() {
           same as before.
         </li>
         <li>
-          <strong>Navigation 1:</strong> its links use Scramble on Hover and its menu button is a
+          <strong>Card Menu:</strong> its links use Scramble on Hover and its menu button is a
           Button.
         </li>
       </ul>
@@ -103,17 +118,17 @@ export default function Page() {
         </li>
       </ul>
 
-      <h2 id="2026-10-13-navigation-1">First block: Navigation 1</h2>
+      <h2 id="2026-10-13-navigation-1">First block: Card Menu</h2>
       <p>
         <time dateTime="2026-10-13">2026-10-13</time>
       </p>
       <h3>Added</h3>
       <ul>
         <li>
-          <strong>Navigation 1:</strong> an animated navigation menu. A small card with a logo and a
+          <strong>Card Menu:</strong> an animated navigation menu. A small card with a logo and a
           MENU button opens into a larger one with the links, and the button becomes a plain cross.
           Contact details and social links sit under the links. See{" "}
-          <Link href="/blocks/navigation-1">Navigation 1</Link>.
+          <Link href="/blocks/card-menu">Card Menu</Link>.
         </li>
         <li>
           <strong>Blocks:</strong> the section is open, with a menu of Marketing, Form and

@@ -1,8 +1,8 @@
 import type { BlockMeta } from "../types";
 
 export const meta = {
-  title: "Navigation 1",
-  slug: "navigation-1",
+  title: "Card Menu",
+  slug: "card-menu",
   group: "Marketing",
   description: "An animated navigation menu that opens into a card with the links and your contact details",
   height: 680,
