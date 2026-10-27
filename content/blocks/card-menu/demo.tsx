@@ -98,7 +98,7 @@ function NavLink({
 
 // `image` is the canyon picture behind the card. Pass false to put the card on the plain page
 // background, such as when the block sits inside something that already has its own look.
-export default function Navigation1({ image = true }: { image?: boolean }) {
+export default function CardMenu({ image = true }: { image?: boolean }) {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("Product");
   const root = useRef<HTMLDivElement>(null);
@@ -175,7 +175,7 @@ export default function Navigation1({ image = true }: { image?: boolean }) {
               size={open ? "icon-sm" : "sm"}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
-              aria-controls="navigation-1-panel"
+              aria-controls="card-menu-panel"
               onClick={() => setOpen((value) => !value)}
               className={cx("uppercase", !open && "w-18")}
             >
@@ -201,7 +201,7 @@ export default function Navigation1({ image = true }: { image?: boolean }) {
           </div>
 
           <div
-            id="navigation-1-panel"
+            id="card-menu-panel"
             inert={!open}
             className={cx(
               "grid transition-[grid-template-rows] duration-600 motion-reduce:transition-none",
