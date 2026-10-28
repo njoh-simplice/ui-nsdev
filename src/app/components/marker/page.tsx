@@ -18,7 +18,7 @@ export default function Page() {
           name: "size",
           type: "sm | default | lg",
           default: "default",
-          description: "The diameter: 32px, 44px or 60px.",
+          description: "The diameter: 28px, 36px or 48px.",
         },
         {
           name: "disabled",
@@ -70,23 +70,23 @@ export default function Page() {
         notes: [
           {
             label: "Sizes:",
-            text: "Round at 32, 44 or 60px, with a 16, 20 or 24px plus. The 44px default matches a comfortable touch target.",
+            text: "Round at 28, 36 or 48px, with a 14, 16 or 20px plus, inside a 3px ring.",
           },
           {
             label: "Closed:",
-            text: "A surface fill with a strong hairline and a plus in the secondary text color, 3.9:1 against the fill.",
+            text: "A surface fill with a 3px ring and a plus, both in the secondary text color. The plus is 3.9:1 against the fill.",
           },
           {
             label: "Open:",
-            text: "The hairline and the icon switch to the main text color, and the plus turns 45 degrees into a cross.",
+            text: "The fill changes to the accent, the ring and the icon to the page color (14.6:1 against the accent), and the plus turns 45 degrees into a cross.",
           },
           {
             label: "Made for images:",
-            text: "The dark fill stands out on a light photo and the hairline keeps it from disappearing on the dark page.",
+            text: "The dark fill stands out on a light photo and the ring keeps it from disappearing on the dark page.",
           },
           {
             label: "Disabled:",
-            text: "A quieter hairline and a muted icon.",
+            text: "A quieter ring and a muted icon.",
           },
         ],
       }}
@@ -98,7 +98,7 @@ export default function Page() {
           },
           {
             label: "Hover:",
-            text: "The fill lightens to the border color and the plus brightens to the main text color.",
+            text: "A closed marker lightens its fill to the border color and brightens the plus to the main text color. An open one softens its accent fill to 85%.",
           },
           {
             label: "Turning:",
@@ -130,7 +130,7 @@ export default function Page() {
           },
           {
             label: "Target size:",
-            text: "Even the 32px size clears the 24px minimum of WCAG 2.2 AA.",
+            text: "Even the 28px size clears the 24px minimum of WCAG 2.2 AA.",
           },
         ],
       }}
