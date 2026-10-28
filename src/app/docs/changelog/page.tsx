@@ -17,6 +17,20 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-28-product-hotspot">New block: Product Hotspot</h2>
+      <p>
+        <time dateTime="2026-10-28">2026-10-28</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Product Hotspot:</strong> a product photo with Markers on its parts. Pressing one
+          opens a card about that part in the corner of the picture and closes the one before it,
+          and Escape closes it. On a phone the card sits below the photo. See{" "}
+          <Link href="/blocks/product-hotspot">Product Hotspot</Link>.
+        </li>
+      </ul>
+
       <h2 id="2026-10-28-marker">New component: Marker</h2>
       <p>
         <time dateTime="2026-10-28">2026-10-28</time>
