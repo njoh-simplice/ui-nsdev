@@ -6,6 +6,8 @@ import CardMenu from "./card-menu/demo";
 import { meta as cardMenu } from "./card-menu/meta";
 import GlassDock from "./glass-dock/demo";
 import { meta as glassDock } from "./glass-dock/meta";
+import ProductHotspot from "./product-hotspot/demo";
+import { meta as productHotspot } from "./product-hotspot/meta";
 import UnderlayMenu from "./underlay-menu/demo";
 import { meta as underlayMenu } from "./underlay-menu/meta";
 import type { BlockEntry } from "./types";
@@ -13,5 +15,6 @@ import type { BlockEntry } from "./types";
 export const blocks: BlockEntry[] = [
   { meta: cardMenu, Component: CardMenu },
   { meta: glassDock, Component: GlassDock },
+  { meta: productHotspot, Component: ProductHotspot },
   { meta: underlayMenu, Component: UnderlayMenu },
 ];
