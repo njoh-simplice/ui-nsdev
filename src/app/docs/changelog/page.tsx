@@ -26,7 +26,7 @@ export default function Page() {
         <li>
           <strong>Product Hotspot:</strong> a product photo with Markers on its parts. Pressing one
           opens a card about that part in the corner of the picture and closes the one before it,
-          and Escape closes it. On a phone the card sits below the photo. See{" "}
+          and Escape closes it. On a phone the card sits below the photo. It wears its own colors, wine and white smoke, rather than the site&apos;s. See{" "}
           <Link href="/blocks/product-hotspot">Product Hotspot</Link>.
         </li>
       </ul>
@@ -39,7 +39,7 @@ export default function Page() {
       <ul>
         <li>
           <strong>Marker:</strong> a round plus button to pin on an image. It turns into a cross
-          while what it opened is showing, and comes in three sizes. See{" "}
+          while what it opened is showing, and comes in three sizes. Its colors can be changed with the <code>--marker-*</code> custom properties. See{" "}
           <Link href="/components/marker">Marker</Link>.
         </li>
       </ul>

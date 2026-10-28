@@ -21,9 +21,9 @@ const hotspots: Hotspot[] = [
   {
     id: "handlebars",
     label: "Handlebars",
-    x: 72,
-    y: 10.5,
-    image: "/assets/images/product-hotspot/cockpit.webp",
+    x: 66.5,
+    y: 9,
+    image: "/assets/images/product-hotspot/cockpit-burgundy.webp",
     alt: "The handlebars seen from above, with the display between the grips",
     name: "Handlebars and display",
     description:
@@ -32,9 +32,9 @@ const hotspots: Hotspot[] = [
   {
     id: "saddle",
     label: "Saddle",
-    x: 41.8,
-    y: 21.7,
-    image: "/assets/images/product-hotspot/saddle.webp",
+    x: 40,
+    y: 27,
+    image: "/assets/images/product-hotspot/saddle-burgundy.webp",
     alt: "The black saddle on its seatpost, seen from the side",
     name: "Contoured saddle",
     description:
@@ -43,9 +43,9 @@ const hotspots: Hotspot[] = [
   {
     id: "wheels",
     label: "Rear wheel",
-    x: 17.1,
-    y: 41,
-    image: "/assets/images/product-hotspot/wheel.webp",
+    x: 19.5,
+    y: 38,
+    image: "/assets/images/product-hotspot/wheel-burgundy.webp",
     alt: "A three-spoke mag wheel with a wide knobby tire",
     name: "Mag wheels, fat tires",
     description:
@@ -54,9 +54,9 @@ const hotspots: Hotspot[] = [
   {
     id: "brakes",
     label: "Front fork and brake",
-    x: 82,
-    y: 55.3,
-    image: "/assets/images/product-hotspot/wheel.webp",
+    x: 78,
+    y: 57,
+    image: "/assets/images/product-hotspot/wheel-burgundy.webp",
     alt: "The front wheel with its suspension fork and disc brake",
     name: "Suspension fork, disc brake",
     description:
@@ -64,6 +64,9 @@ const hotspots: Hotspot[] = [
   },
 ];
 
+// This block wears its own colors, not the site's: wine and white smoke, set below as --wine and
+// --white-smoke on the section. The Marker is recolored through its --marker-* properties.
+//
 // The rounded corners follow one rule: an outer radius is the inner radius plus the gap between
 // them. The photo inside the card has --r-image, the card is --pad bigger, and the frame around it
 // is --pad bigger again, so the three curves run parallel and the gaps look even all round.
@@ -95,10 +98,10 @@ export default function ProductHotspot() {
   }, [activeId]);
 
   return (
-    <section className="bg-text px-4 py-10 text-bg [--pad:8px] [--r-image:8px] sm:px-5 md:py-12 md:[--pad:12px]">
+    <section className="bg-(--white-smoke) px-4 py-10 text-bg [--line:color-mix(in_srgb,var(--wine)_30%,var(--white-smoke))] [--marker-fill:var(--white-smoke)] [--marker-hover-fill:color-mix(in_srgb,var(--wine)_14%,var(--white-smoke))] [--marker-ink:var(--wine)] [--marker-open-fill:var(--wine)] [--marker-open-ink:var(--white-smoke)] [--pad:6px] [--r-image:6px] [--white-smoke:#F7F4F3] [--wine:#5B2333] sm:px-5 md:py-12 md:[--pad:8px]">
       <header className="mb-10 max-w-xl md:mb-16">
         <h2 className="text-3xl leading-tight font-semibold tracking-tight md:text-4xl">
-          Stealth Black Fat-Tire <span className="text-text-secondary">Mountain Bike</span>
+          Stealth Black Fat-Tire <span className="text-(--wine)">Mountain Bike</span>
         </h2>
         <p className="mt-3 text-sm leading-6 text-bg/70">
           Frame geometry, rear shock, front suspension fork, 3-spoke mag wheels, wide knobby fat
@@ -106,11 +109,11 @@ export default function ProductHotspot() {
         </p>
       </header>
 
-      <div className="relative overflow-hidden rounded-[calc(var(--r-image)+var(--pad)*2)] border border-bg/10 bg-[#f2f1ef]">
+      <div className="relative overflow-hidden rounded-[calc(var(--r-image)+var(--pad)*2)] border border-(--line) bg-(--wine)">
         <div className="relative aspect-video">
           <Image
-            src="/assets/images/product-hotspot/bike.webp"
-            alt="A stealth black fat-tire mountain bike seen from the side"
+            src="/assets/images/product-hotspot/bike-burgundy.webp"
+            alt="A matte black fat-tire mountain bike seen from the side, on a wine background"
             fill
             priority
             sizes="(min-width: 1280px) 1240px, 100vw"
@@ -143,13 +146,13 @@ export default function ProductHotspot() {
           aria-label={current.name}
           inert={!open}
           data-closed={open ? undefined : ""}
-          className="m-(--pad) origin-bottom-left rounded-[calc(var(--r-image)+var(--pad))] bg-surface p-(--pad) text-text transition-[opacity,scale,translate] duration-200 ease-out starting:translate-y-2 starting:opacity-0 data-[closed]:pointer-events-none data-[closed]:translate-y-2 data-[closed]:scale-97 data-[closed]:opacity-0 max-md:data-[closed]:hidden motion-reduce:transition-none md:absolute md:bottom-0 md:left-0 md:w-[34%]"
+          className="m-(--pad) origin-bottom-left rounded-[calc(var(--r-image)+var(--pad))] bg-(--white-smoke) p-(--pad) text-bg transition-[opacity,scale,translate] duration-200 ease-out starting:translate-y-2 starting:opacity-0 data-[closed]:pointer-events-none data-[closed]:translate-y-2 data-[closed]:scale-97 data-[closed]:opacity-0 max-md:data-[closed]:hidden motion-reduce:transition-none md:absolute md:bottom-0 md:left-0 md:w-[34%]"
         >
           <div
             key={current.id}
             className="flex flex-col gap-3 transition-opacity duration-200 starting:opacity-0 motion-reduce:transition-none"
           >
-            <div className="relative aspect-video overflow-hidden rounded-(--r-image) bg-[#f2f1ef]">
+            <div className="relative aspect-video overflow-hidden rounded-(--r-image) bg-(--wine)">
               <Image
                 src={current.image}
                 alt={current.alt}
@@ -160,7 +163,7 @@ export default function ProductHotspot() {
             </div>
             <div className="flex flex-col gap-1 px-1 pb-1">
               <h3 className="text-xl leading-tight font-medium md:text-2xl">{current.name}</h3>
-              <p className="text-sm leading-5 text-text/70">{current.description}</p>
+              <p className="text-sm leading-5 text-bg/70">{current.description}</p>
             </div>
           </div>
         </div>
