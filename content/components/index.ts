@@ -18,6 +18,7 @@ import { meta as hoverCard } from "./hover-card/meta";
 import { meta as input } from "./input/meta";
 import { meta as kbd } from "./kbd/meta";
 import { meta as label } from "./label/meta";
+import { meta as marker } from "./marker/meta";
 import { meta as popover } from "./popover/meta";
 import { meta as progress } from "./progress/meta";
 import { meta as radioGroup } from "./radio-group/meta";
@@ -55,6 +56,7 @@ export const components = [
   input,
   kbd,
   label,
+  marker,
   popover,
   progress,
   radioGroup,

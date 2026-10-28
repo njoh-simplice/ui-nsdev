@@ -17,6 +17,19 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-28-marker">New component: Marker</h2>
+      <p>
+        <time dateTime="2026-10-28">2026-10-28</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Marker:</strong> a round plus button to pin on an image. It turns into a cross
+          while what it opened is showing, and comes in three sizes. See{" "}
+          <Link href="/components/marker">Marker</Link>.
+        </li>
+      </ul>
+
       <h2 id="2026-10-27-glass-dock">New block: Glass Dock</h2>
       <p>
         <time dateTime="2026-10-27">2026-10-27</time>
