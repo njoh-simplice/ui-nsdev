@@ -88,6 +88,18 @@ export default function Page() {
             label: "Disabled:",
             text: "A quieter ring and a muted icon.",
           },
+          {
+            label: "Your own colors:",
+            text: (
+              <>
+                Set <code>--marker-fill</code> and <code>--marker-ink</code> (the ring and the
+                icon) for the closed marker, <code>--marker-hover-fill</code> for hover, and{" "}
+                <code>--marker-open-fill</code> and <code>--marker-open-ink</code> for the open
+                one, on the marker or on any parent. Each one you leave out keeps the colors above.
+                Product Hotspot dresses the marker in wine and white smoke this way.
+              </>
+            ),
+          },
         ],
       }}
       interaction={{

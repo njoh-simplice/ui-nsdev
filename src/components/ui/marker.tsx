@@ -14,16 +14,20 @@ type Size = "sm" | "default" | "lg";
 // page color: over a light photo the light ring alone would vanish, and the halo gives the marker
 // an edge there. Hover and press are guarded with not-data-[disabled], and the turn and the press
 // scale are both skipped for reduced motion.
+//
+// To recolor it, set these custom properties on the marker or any parent; each falls back to the
+// library's own color: --marker-fill and --marker-ink (the ring and the icon) when closed,
+// --marker-hover-fill when pointed at, and --marker-open-fill and --marker-open-ink when open.
 const base = [
-  "inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border-3 border-text-secondary bg-surface text-text-secondary select-none",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border-3 border-[color:var(--marker-ink,var(--color-text-secondary))] bg-[var(--marker-fill,var(--color-surface))] text-[color:var(--marker-ink,var(--color-text-secondary))] select-none",
   "[&_svg]:shrink-0 [&_svg]:transition-transform [&_svg]:duration-200 [&_svg]:ease-out motion-reduce:[&_svg]:transition-none",
-  "transition-[background-color,border-color,color,scale] duration-150 ease-out",
+  "transition-[background-color,border-color,color,scale,filter] duration-150 ease-out",
   focusRing,
   "focus-visible:shadow-[0_0_0_2px_var(--color-bg)]",
   "motion-safe:not-data-[disabled]:active:scale-95",
-  "not-aria-expanded:not-data-[disabled]:hover:bg-border not-aria-expanded:not-data-[disabled]:hover:text-text",
-  "aria-expanded:border-bg aria-expanded:bg-accent aria-expanded:text-bg aria-expanded:[&_svg]:rotate-45",
-  "aria-expanded:not-data-[disabled]:hover:bg-accent/85",
+  "not-aria-expanded:not-data-[disabled]:hover:bg-[var(--marker-hover-fill,var(--color-border))] not-aria-expanded:not-data-[disabled]:hover:text-[color:var(--marker-ink,var(--color-text))]",
+  "aria-expanded:border-[color:var(--marker-open-ink,var(--color-bg))] aria-expanded:bg-[var(--marker-open-fill,var(--color-accent))] aria-expanded:text-[color:var(--marker-open-ink,var(--color-bg))] aria-expanded:[&_svg]:rotate-45",
+  "aria-expanded:not-data-[disabled]:hover:brightness-90",
   "data-[disabled]:cursor-not-allowed data-[disabled]:border-border data-[disabled]:text-muted",
 ].join(" ");
 
