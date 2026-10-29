@@ -165,16 +165,22 @@ export default function EventCalendar() {
                     }}
                     className={cx(
                       cell,
-                      "cursor-pointer transition-colors duration-150",
+                      "group/day cursor-pointer transition-[background-color,border-color,color,scale,translate] duration-150 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-95",
                       selected
-                        ? "border-(--ink-line) bg-(--ink) text-(--smoke)"
-                        : "border-(--line) bg-(--smoke) text-(--wine) hover:bg-white",
+                        ? "border-(--ink-line) bg-(--ink) text-(--smoke) hover:bg-[color-mix(in_srgb,var(--ink)_75%,var(--wine))] active:bg-[color-mix(in_srgb,var(--ink)_55%,var(--wine))]"
+                        : "border-(--line) bg-(--smoke) text-(--wine) hover:bg-[color-mix(in_srgb,var(--wine)_10%,var(--smoke))] active:bg-[color-mix(in_srgb,var(--wine)_20%,var(--smoke))]",
                       focusRing,
                     )}
                   >
                     <span className={numeral}>{number}</span>
                     <span className="relative mt-auto h-[48%] w-full overflow-hidden rounded-[calc(var(--r)-5px)]">
-                      <Image src={kinds[eventKind].thumb} alt="" fill sizes="120px" className="object-cover" />
+                      <Image
+                        src={kinds[eventKind].thumb}
+                        alt=""
+                        fill
+                        sizes="120px"
+                        className="object-cover transition-transform duration-300 ease-out motion-safe:group-hover/day:scale-110"
+                      />
                       {/* The white smoke edge of the selected day's photo. It is drawn over the photo, so the
                           photo keeps its size and nothing shifts when a day is selected. */}
                       {selected && <span aria-hidden className="absolute inset-0 rounded-[inherit] border-2 border-(--smoke)" />}
