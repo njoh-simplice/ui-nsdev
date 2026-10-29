@@ -17,6 +17,21 @@ export default function Page() {
         decided how the library is distributed.
       </p>
 
+      <h2 id="2026-10-29-event-calendar">New block: Event Calendar</h2>
+      <p>
+        <time dateTime="2026-10-29">2026-10-29</time>
+      </p>
+      <h3>Added</h3>
+      <ul>
+        <li>
+          <strong>Event Calendar:</strong> a month of upcoming celebrations. The days with an event
+          show a small photo and can be pressed; the others are plain numbers. Pressing one fills
+          the card beside the calendar with that event&apos;s photo, date, description and a
+          booking button, and the arrows move between months. On a phone the card sits below the
+          calendar. See <Link href="/blocks/event-calendar">Event Calendar</Link>.
+        </li>
+      </ul>
+
       <h2 id="2026-10-28-product-hotspot">New block: Product Hotspot</h2>
       <p>
         <time dateTime="2026-10-28">2026-10-28</time>
